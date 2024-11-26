@@ -16,8 +16,7 @@ public class Main {
         Subject hci = new Subject("Human-Computer Interaction 1","Payunan Ryan Christian","PATHFIT 3",3,1,"Placeholder","Placeholder","Placeholder");
 
 
-
-
+        System.out.println("Hi");
         // Sample lang ni
         Laboratory lab1 = new Laboratory("Lab","High" ,20,12,"Sorting","This is description",oop,"CICT Room 301");
         Materials mat1 = new Materials( "Masking tape" , 12);
