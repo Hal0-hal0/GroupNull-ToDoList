@@ -103,6 +103,7 @@ public class Student {
         System.out.println("Year Level: " + this.yearLevel);
         System.out.println("Section: " + this.section);
         System.out.println("Program: "  + this.program);
+
     }
 
     //Add Student

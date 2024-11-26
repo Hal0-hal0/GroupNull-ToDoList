@@ -49,7 +49,7 @@ public class Main {
 
             try{
                 System.out.println("Let's organize things up!");
-                System.out.println("[1] Add Task \n[2] Delete Task\n[3] Search a Task \n[4] Update \n[5] Display \n[6] Log out \n[7] Exit");
+                System.out.println("[1] Add Task \n[2] Delete Task\n[3] Search a Task \n[4] Update \n[5] Display \n[6] Exit");
                 System.out.print("Choose a transaction (Type 1): ");
                 int transaction = input.nextInt();
 
@@ -71,16 +71,20 @@ public class Main {
                     //Method
                     display();
                 } else if (transaction == 6) {
-                    System.out.println("Logged out successfully!");
-                    pressEnterToContinue();
-                    register();
-                } else if (transaction == 7) {
-                    System.out.println("Exiting the app...");
-                    pressEnterToContinue();
-                    break;
+                    input.nextLine();
+                    System.out.print("=> Assistant: Are you sure you want to exit the app?\nThis will discard all changes in the app! (Yes/No): ");
+                    String answer = input.nextLine();
+
+                    if (answer.equalsIgnoreCase("Yes")){
+                        System.out.println("Exiting the app...");
+                        break;
+                    }else {
+                        System.out.println("Returning to menu!");
+                        pressEnterToContinue();
+                    }
                 }
             } catch (Exception e) {
-                System.out.println("Tata: Hmmm... Try entering numbers from 1-5 and try again!");
+                System.out.println("=> Assistant: Hmmm... Try entering numbers from 1-5 and try again!");
                 pressEnterToContinue();
             }
         }
@@ -91,100 +95,107 @@ public class Main {
     public static void register() {
         Scanner input = new Scanner(System.in);
 
-
-
         // REGISTRATION
         boolean isValid = false;
         do{
-            try {
 
-                System.out.println("REGISTER");
-                System.out.println("Register as: \n[1] Student \n[2] Admin ");
-                System.out.print("Transaction: ");
-                int register = input.nextInt();
-                input.nextLine();
+            line();
+            System.out.println("\nREGISTER");
 
-                System.out.println("You selected " + register);
+            System.out.print("First Name: ");
+            String firstName = input.nextLine();
 
-                if (register == 1){
-                    line();
+            System.out.print("Last Name: ");
+            String lastName = input.nextLine();
 
-                    System.out.print("\nFirst Name: ");
-                    String firstName = input.nextLine();
+            System.out.print("Student Id: ");
+            String id = input.nextLine();
 
-                    System.out.print("Last Name: ");
-                    String lastName = input.nextLine();
+            System.out.print("Address: ");
+            String address = input.nextLine();
 
-                    System.out.print("Student Id: ");
-                    String id = input.nextLine();
+            char section = 'A';
 
-                    System.out.print("Address: ");
-                    String address = input.nextLine();
+            do{
+                System.out.print("Section (A/B): ");
+                section = input.next().toUpperCase().charAt(0);
 
-                    char section = 'A';
-                    while (!isValid) {
-                        System.out.print("Section (A/B): ");
-                        section = input.next().toUpperCase().charAt(0);
-
-                        if (section == 'A' || section == 'B') {
-                            isValid = true;
-                            input.nextLine();
-                        } else {
-                            System.out.println("invalid input!");
-                        }
-                    }
-
-                    System.out.print("Program: ");
-                    String program = input.nextLine().toUpperCase();
-
-                    System.out.println("Do you want to try again?: " );
-                    String ans = input.nextLine();
-                    if (ans.equalsIgnoreCase("no")){
-                        System.out.println("Assistant: Welcome, " + firstName + "!");
-                        pressEnterToContinue();
-                        line();
-
-                        // Add student
-                        Student student = new Student(firstName, lastName, id, address, 2, section, program);
-                        Student.addStudent(student);
-
-                        //Create subject
-                        Subject oop = new Subject("Object-Oriented Programming","Harder Keia Joy","CIT 207",5,2,"Placeholder","CICT","Major");
-                        Subject dataStructures = new Subject("Data Structures And Algorithm","Harder Keia Joy","Placeholder",20,2,"Placeholder","CICT","Major");
-                        Subject art = new Subject("Art Appreciation","Souribio Arturo","HUM 110",20,2,"Placeholder","CICT","Major");
-                        Subject contemporary = new Subject("Contemporary World","Beleno Ramon B.","SS 111",20,2,"Placeholder","CICT","Major");
-                        Subject ethics = new Subject("Ethics","Tusiap Andrea L.","",3, 11,"Placeholder","Placeholder","Placeholder");
-                        Subject platTech = new Subject("Platform Technologies","Cadiz Christian","CIT 206",3,1,"Placeholder","Placeholder","Placeholder");
-                        Subject pathfit = new Subject("PATHFIT 3","Daanoy Christine Joy F","PATHFIT 3",3,1,"Placeholder","Placeholder","Placeholder");
-                        Subject hci = new Subject("Human-Computer Interaction 1","Payunan Ryan Christian","PATHFIT 3",3,1,"Placeholder","Placeholder","Placeholder");
-
-                        student.addSubject(oop);
-                        student.addSubject(dataStructures);
-                        student.addSubject(art);
-                        student.addSubject(contemporary);
-                        student.addSubject(ethics);
-                        student.addSubject(platTech);
-                        student.addSubject(pathfit);
-                        student.addSubject(hci);
-
-                        Student.displayAllStudent();
-                        //student.displaySubject();
-                        System.out.println(" ");
-                        isValid = false;
-                    }else {
-                        isValid = true;
-                    }
-
-
+                if (section == 'A' || section == 'B') {
+                    isValid = false;
+                    input.nextLine();
+                } else {
+                    System.out.println("invalid input!");
+                    isValid = true;
                 }
+            }while (isValid);
 
-            } catch (Exception e) {
-                System.out.println("Invalid Input!");
+            System.out.print("Program: ");
+            String program = input.nextLine().toUpperCase();
+
+            System.out.print("Do you want to SAVE this information?: " );
+            String ans = input.nextLine();
+
+            if (ans.equalsIgnoreCase("yes")) {
+                System.out.println("Assistant: Welcome, " + firstName + "!");
+                pressEnterToContinue();
+                line();
+
+                // Add student
+                Student student = new Student(firstName, lastName, id, address, 2, section, program);
+                Student.addStudent(student);
+
+                //Create subject
+                Subject oop = new Subject("Object-Oriented Programming", "Harder Keia Joy", "CIT 207", 5, 2, "Placeholder", "CICT", "Major");
+                Subject dataStructures = new Subject("Data Structures And Algorithm", "Harder Keia Joy", "Placeholder", 20, 2, "Placeholder", "CICT", "Major");
+                Subject art = new Subject("Art Appreciation", "Souribio Arturo", "HUM 110", 20, 2, "Placeholder", "CICT", "Major");
+                Subject contemporary = new Subject("Contemporary World", "Beleno Ramon B.", "SS 111", 20, 2, "Placeholder", "CICT", "Major");
+                Subject ethics = new Subject("Ethics", "Tusiap Andrea L.", "", 3, 11, "Placeholder", "Placeholder", "Placeholder");
+                Subject platTech = new Subject("Platform Technologies", "Cadiz Christian", "CIT 206", 3, 1, "Placeholder", "Placeholder", "Placeholder");
+                Subject pathfit = new Subject("PATHFIT 3", "Daanoy Christine Joy F", "PATHFIT 3", 3, 1, "Placeholder", "Placeholder", "Placeholder");
+                Subject hci = new Subject("Human-Computer Interaction 1", "Payunan Ryan Christian", "PATHFIT 3", 3, 1, "Placeholder", "Placeholder", "Placeholder");
+
+                student.addSubject(oop);
+                student.addSubject(dataStructures);
+                student.addSubject(art);
+                student.addSubject(contemporary);
+                student.addSubject(ethics);
+                student.addSubject(platTech);
+                student.addSubject(pathfit);
+                student.addSubject(hci);
+
+                Student.displayAllStudent();
+                //student.displaySubject();
+                System.out.println(" ");
+                isValid = false;
+
+            }else {
+                isValid = true;
             }
 
         }while (isValid);
 
 
+
+    }
+
+    //Exit
+    public static void exit(){
+        Scanner input = new Scanner(System.in);
+
+        line();
+
+        while (true){
+            System.out.println("Are you sure you want to exit the app? This will discard all changes in the app! (Yes/No): ");
+            String answer = input.nextLine();
+
+            if (answer.equalsIgnoreCase("Yes")){
+                System.out.println("Exiting the app...");
+                break;
+            }else {
+                System.out.println("Returning to menu!");
+                pressEnterToContinue();
+            }
+        }
 
     }
 
