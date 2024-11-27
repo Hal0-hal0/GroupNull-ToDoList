@@ -5,6 +5,8 @@ public class Main {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
 
+
+        System.out.println("Hi");
         //To add equipment (if a subject needs equipment/materials)
 //        lab1.addEquipment(mat1);
 
@@ -132,11 +134,11 @@ public class Main {
             System.out.print("Program: ");
             String program = input.nextLine().toUpperCase();
 
-            System.out.print("Do you want to SAVE this information?: " );
+            System.out.print("Do you want to SAVE this information?(Yes/No): " );
             String ans = input.nextLine();
 
             if (ans.equalsIgnoreCase("yes")) {
-                System.out.println("Assistant: Welcome, " + firstName + "!");
+                System.out.println("=> Assistant: Welcome, " + firstName + "!");
                 pressEnterToContinue();
                 line();
 
@@ -173,29 +175,6 @@ public class Main {
             }
 
         }while (isValid);
-
-
-
-    }
-
-    //Exit
-    public static void exit(){
-        Scanner input = new Scanner(System.in);
-
-        line();
-
-        while (true){
-            System.out.println("Are you sure you want to exit the app? This will discard all changes in the app! (Yes/No): ");
-            String answer = input.nextLine();
-
-            if (answer.equalsIgnoreCase("Yes")){
-                System.out.println("Exiting the app...");
-                break;
-            }else {
-                System.out.println("Returning to menu!");
-                pressEnterToContinue();
-            }
-        }
 
     }
 
