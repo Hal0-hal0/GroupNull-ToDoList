@@ -5,11 +5,15 @@ public class Main {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
 
+        Subject oop = new Subject("Object-Oriented Programming", "Harder Keia Joy", "CIT 207", 5, 2, "Placeholder", "CICT", "Major");
+        Subject dataStructures = new Subject("Data Structures And Algorithm", "Harder Keia Joy", "Placeholder", 20, 2, "Placeholder", "CICT", "Major");
+        Subject art = new Subject("Art Appreciation", "Souribio Arturo", "HUM 110", 20, 2, "Placeholder", "CICT", "Major");
+        Subject contemporary = new Subject("Contemporary World", "Beleno Ramon B.", "SS 111", 20, 2, "Placeholder", "CICT", "Major");
+        Subject ethics = new Subject("Ethics", "Tusiap Andrea L.", "", 3, 11, "Placeholder", "Placeholder", "Placeholder");
+        Subject platTech = new Subject("Platform Technologies", "Cadiz Christian", "CIT 206", 3, 1, "Placeholder", "Placeholder", "Placeholder");
+        Subject pathfit = new Subject("PATHFIT 3", "Daanoy Christine Joy F", "PATHFIT 3", 3, 1, "Placeholder", "Placeholder", "Placeholder");
+        Subject hci = new Subject("Human-Computer Interaction 1", "Payunan Ryan Christian", "PATHFIT 3", 3, 1, "Placeholder", "Placeholder", "Placeholder");
 
-        System.out.println("Hi");
-        System.out.println("Hi again");
-
-        System.out.println("Hello, please work");
         //To add equipment (if a subject needs equipment/materials)
 //        lab1.addEquipment(mat1);
 
@@ -54,14 +58,47 @@ public class Main {
 
             try{
                 System.out.println("Let's organize things up!");
-                System.out.println("[1] Add Task \n[2] Delete Task\n[3] Search a Task \n[4] Update \n[5] Display \n[6] Exit");
+                System.out.println("\t[1] Add Task \n\t[2] Delete Task\n\t[3] Search a Task \n\t[4] Update \n\t[5] Display \n\t[6] Exit");
                 System.out.print("Choose a transaction (Type 1): ");
                 int transaction = input.nextInt();
 
                 if(transaction == 1){
-                    System.out.println("Add Task");
                     //Method
-                    add();
+                    //add();
+                    System.out.println("==========> Add Task <==========");
+                    System.out.println("Choose a subject:");
+                    System.out.println("\t[1] Object Oriented Programming \n\t[2] Data Structure \n\t[3] Art Appreciation \n\t[4] Contemporary World. \n\t[5] Ethics \n\t[6] Platform technology \n\t[7] Pathfit \n\t[8] Human Computer Interaction");
+                    System.out.print("Subject: ");
+                    int choice = input.nextInt();
+                    input.nextLine();
+
+                    if(choice == 1){
+                        System.out.println("== ADD OBJECT ORIENTED PROGRAMMING ==");
+                        addTask(oop);
+
+                    } else if (choice == 2) {
+                        System.out.println("== ADD DATA STRUCTURES ==");
+                        addTask(dataStructures);
+                    } else if (choice == 3) {
+                        System.out.println("=ADD ART APPRECIATION=");
+                        addTask(art);
+                    } else if (choice == 4) {
+                        System.out.println("=ADD CONTEMPORARY WORLD=");
+                        addTask(contemporary);
+                    } else if (choice == 5) {
+                        System.out.println("=ADD ETHICS=");
+                        addTask(ethics);
+                    } else if (choice == 6) {
+                        System.out.println("=ADD PLATFORM TECHNOLOGY=");
+                        addTask(platTech);
+                    } else if (choice == 7) {
+                        System.out.println("=ADD PATHFIT=");
+                        addTask(pathfit);
+                    } else if (choice == 8) {
+                        System.out.println("=ADD HUMAN COMPUTER INTERACTION=");
+                        addTask(hci);
+                    }
+
                 } else if (transaction == 2) {
                     System.out.println("Delete task");
                     //Method
@@ -74,7 +111,12 @@ public class Main {
                 } else if (transaction == 5) {
                     System.out.println("Display");
                     //Method
-                    display();
+                    //display();
+
+                    Student.displayAllStudent();
+                    oop.displayTask();
+                    pressEnterToContinue();
+
                 } else if (transaction == 6) {
                     input.nextLine();
                     System.out.print("=> Assistant: Are you sure you want to exit the app?\nThis will discard all changes in the app! (Yes/No): ");
@@ -181,15 +223,86 @@ public class Main {
         }while (isValid);
 
     }
-
     //Menu Methods
     public static void add(){
-        System.out.println("Add Task");
-        System.out.println("Choose a subject");
-        System.out.println("1. OOP \n2. Data Struct");
-        System.out.println("Choice: ");
+        Scanner input = new Scanner(System.in);
+        System.out.println("==========> Add Task <==========");
+        System.out.println("Choose a subject:");
+        System.out.println("\t[1] Object Oriented Programming \n\t[2] Data Structure \n\t[3] Art Appreciation \n\t[4] Contemporary World. \n\t[5] Ethics \n\t[6] Platform technology \n\t[7] Pathfit \n\t[8] Human Computer Interaction");
+        System.out.print("Subject: ");
+        int choice = input.nextInt();
+        input.nextLine();
+
+        if(choice == 1){
+            System.out.println("== ADD OBJECT ORIENTED PROGRAMMING ==");
+            Subject oop = new Subject("Object-Oriented Programming", "Harder Keia Joy", "CIT 207", 5, 2, "Placeholder", "CICT", "Major");
+
+            addTask(oop);
+
+
+        }
 
     }
+
+    public static void addTask(Subject subject){
+        Scanner input = new Scanner(System.in);
+
+        System.out.println("== TASK ==");
+        System.out.println("Choose a subject:");
+        System.out.println("\t1. Exam \n\t2. Laboratory \n\t3. Group Project \n\t 4. Presentation \n\t5. Assignment");
+        System.out.print("Task: ");
+        int choice = input.nextInt();
+
+        if (choice == 1){
+            System.out.println("== ADD EXAM ==");
+            input.nextLine();
+
+            System.out.print("Title: ");
+            String title = input.nextLine();
+
+
+            System.out.print("Priority Level: ");
+            String priorityLevel = input.nextLine();
+
+
+            System.out.print("Due Date: ");
+            int dueDate = input.nextInt();
+            input.nextLine();
+
+            System.out.print("Month: ");
+            int month = input.nextInt();
+            input.nextLine();
+
+            System.out.print("Description: ");
+            String description = input.nextLine();
+
+            System.out.print("Topic: ");
+            String topic = input.nextLine();
+
+
+            System.out.print("Location: ");
+            String location = input.nextLine();
+
+
+            System.out.print("Exam Type: ");
+            String type = input.nextLine();
+
+
+            Exam exam = new Exam(title, priorityLevel,dueDate,month,topic,description,subject,location,type);
+            subject.addTask(exam);
+
+        } else if (choice == 2) {
+            System.out.println("== ADD LABORATORY ==");
+        } else if (choice == 3) {
+            System.out.println("== ADD GROUP PROJECT ==");
+        } else if (choice == 4) {
+            System.out.println("== ADD PRESENTATION ==");
+        } else if (choice == 5) {
+            System.out.println("== ADD ASSIGNMENT ==");
+        }
+    }
+
+
     // log out and return to registration
     public static void logOut(){
         System.out.println("LOG-OUT");
@@ -197,8 +310,8 @@ public class Main {
     }
     //Display Methods
 
-    public static void display(){
-
+    public static void display(Subject subject){
+        subject.displayTask();
     }
 
 
