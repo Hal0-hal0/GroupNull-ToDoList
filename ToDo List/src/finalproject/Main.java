@@ -8,6 +8,8 @@ public class Main {
 
         System.out.println("Hi");
         System.out.println("Hi again");
+
+        System.out.println("Hello");
         //To add equipment (if a subject needs equipment/materials)
 //        lab1.addEquipment(mat1);
 
