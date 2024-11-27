@@ -109,6 +109,7 @@ public class Main {
 
             System.out.print("First Name: ");
             String firstName = input.nextLine();
+            input.nextLine();
 
             System.out.print("Last Name: ");
             String lastName = input.nextLine();
