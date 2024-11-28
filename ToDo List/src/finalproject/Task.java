@@ -37,7 +37,7 @@ public abstract class Task {
         this.description = description;
     }
 
-    public String getTitle() {
+    public String getTitle(int i) {
         return title;
     }
 
@@ -116,6 +116,8 @@ public abstract class Task {
             System.out.println("Remaining Days: " + remainingDays);
         }
     }
+
+
 
 
     // ================== DISPLAY =====================

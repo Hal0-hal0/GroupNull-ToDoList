@@ -1,6 +1,7 @@
 package finalproject;
 
 import java.util.LinkedList;
+import java.util.Scanner;
 
 public class Subject {
     private final String subjectName;
@@ -12,6 +13,7 @@ public class Subject {
     public final String department;
     private final String type;
     private LinkedList<Task> tasks;
+    LinkedList<Task> markedAsDone = new LinkedList<>();
 
     public Subject(String subjectName, String teacher,String subjectId, int credits, int semesterOffered, String fieldStudy, String department, String type) {
         this.subjectName = subjectName;
@@ -77,6 +79,77 @@ public class Subject {
         System.out.println("Type: " + this.type);
 
     }
+
+
+    //Display Task Titles
+    public void displayTaskTitle(){
+        Scanner input = new Scanner(System.in);
+        int counter = 0;
+
+        System.out.println("NOTE: FINISHED TASK (Type (0) to show finished tasks)");
+        finishedTaskCounter();
+
+        for(Task e : tasks){
+            counter++;
+//            System.out.println(counter +". "+ e.getTitle(counter - 1));
+            line();
+            System.out.println("\n==> TASK "+counter + " <==");
+            e.display();
+            line();
+        }
+
+
+        //1.ieghreh
+        // 2. ejgiroh
+
+        line();
+        System.out.print("\nChoose a Task: ");
+        int task = input.nextInt();
+
+        if (task == 0){
+            finishedTask();
+        } else {
+            if (!tasks.isEmpty()){
+                line();
+                System.out.println("==> TASK DETAILS <==");
+                Task chosenTask = tasks.get(task-1);
+                chosenTask.display();
+
+                System.out.println("\t[1] Delete Task \n\t[2] Mark as done \n\t[3] Display Finished Tasks");
+                System.out.print("Choice: ");
+                int choice = input.nextInt();
+
+                if (choice == 1){
+                    tasks.remove(counter-1);
+
+                } else if (choice == 2) {
+                    Task done = tasks.remove(counter-1);
+                    markedAsDone.add(done);
+
+                } else if (choice == 3) {
+                    finishedTask();
+                }
+
+            } else {
+                System.out.println("==> Assistant: Add Task First!");
+            }
+        }
+
+
+
+    }
+
+    public void finishedTask(){
+        System.out.println("==> FINISHED TASKS <==");
+        for (Task e : markedAsDone){
+            e.display();
+        }
+    }
+
+    public void finishedTaskCounter(){
+        System.out.println("==> Finished Tasks: "+markedAsDone.size());
+    }
+
     //=====================add Tasks=====================
     public void addTask(Task task){
         this.tasks.add(task);
@@ -86,6 +159,12 @@ public class Subject {
     public void displayTask(){
         for(Task e : tasks){
             e.display();
+        }
+    }
+
+    public static void line(){
+        for(int i = 0; i < 30; i++){
+            System.out.print("==");
         }
     }
 

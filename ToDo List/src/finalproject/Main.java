@@ -48,7 +48,7 @@ public class Main {
         line();
         System.out.println(" ");
         pressEnterToContinue();
-        register();
+        //register();
 
 
         while (true){
@@ -59,7 +59,7 @@ public class Main {
 
             try{
                 System.out.println("Let's organize things up!");
-                System.out.println("\t[1] Add Task \n\t[2] Delete Task\n\t[3] Search a Task \n\t[4] Update \n\t[5] Display \n\t[6] Summary \n\t[7] Exit");
+                System.out.println("\t[1] Add Task \n\t[2] Delete and Mark as Done\n\t[3] Search a Task \n\t[4] Update \n\t[5] Display \n\t[6] Summary \n\t[7] Exit");
                 System.out.print("Choose a transaction (Type 1): ");
                 int transaction = input.nextInt();
 
@@ -100,8 +100,19 @@ public class Main {
                     }
 
                 } else if (transaction == 2) {
-                    System.out.println("Delete task");
+                    System.out.println("==> Delete task and Mark as Done <==");
+                    //oop.displayTaskTitle();
                     //Method
+
+                    System.out.println("Choose a subject:");
+                    System.out.println("\t[1] Object Oriented Programming \n\t[2] Data Structure \n\t[3] Art Appreciation \n\t[4] Contemporary World. \n\t[5] Ethics \n\t[6] Platform technology \n\t[7] Pathfit \n\t[8] Human Computer Interaction");
+                    System.out.print("Subject: ");
+                    int choice = input.nextInt();
+
+                    if (choice == 1){
+                        oop.displayTaskTitle();
+                    }
+
                 } else if (transaction == 3) {
                     System.out.println("Search a task");
                     //Method
@@ -153,16 +164,16 @@ public class Main {
             System.out.println("\n=> REGISTER <=");
 
             System.out.print("First Name: ");
-            String firstName = input.nextLine();
+            String firstName = input.nextLine().toUpperCase();
 
             System.out.print("Last Name: ");
-            String lastName = input.nextLine();
+            String lastName = input.nextLine().toUpperCase();
 
             System.out.print("Student Id: ");
-            String id = input.nextLine();
+            String id = input.nextLine().toUpperCase();
 
             System.out.print("Address: ");
-            String address = input.nextLine();
+            String address = input.nextLine().toUpperCase();
 
             char section = 'A';
 
