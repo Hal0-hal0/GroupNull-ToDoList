@@ -63,6 +63,7 @@ public class Main {
                 System.out.print("Choose a transaction (Type 1): ");
                 int transaction = input.nextInt();
 
+
                 if(transaction == 1){
                     System.out.println("==========> Add Task <==========");
                     System.out.println("Choose a subject:");
