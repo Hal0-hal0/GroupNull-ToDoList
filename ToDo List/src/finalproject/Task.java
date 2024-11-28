@@ -125,7 +125,7 @@ public abstract class Task {
         System.out.println("Priority Level: " + this.priorityLevel);
         System.out.println("Month: " + this.month);
         System.out.println("Due Date: " + this.dueDate);
-        this.calendar(dueDate, month);
+        this.calendar(this.dueDate, this.month);
         System.out.println("Topic:  " + this.topic);
         System.out.println("Description: " + this.description);
     }

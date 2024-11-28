@@ -50,6 +50,7 @@ public class Main {
         pressEnterToContinue();
         register();
 
+
         while (true){
             System.out.println("\n\n ");
             line();
@@ -58,13 +59,11 @@ public class Main {
 
             try{
                 System.out.println("Let's organize things up!");
-                System.out.println("\t[1] Add Task \n\t[2] Delete Task\n\t[3] Search a Task \n\t[4] Update \n\t[5] Display \n\t[6] Exit");
+                System.out.println("\t[1] Add Task \n\t[2] Delete Task\n\t[3] Search a Task \n\t[4] Update \n\t[5] Display \n\t[6] Summary \n\t[7] Exit");
                 System.out.print("Choose a transaction (Type 1): ");
                 int transaction = input.nextInt();
 
                 if(transaction == 1){
-                    //Method
-                    //add();
                     System.out.println("==========> Add Task <==========");
                     System.out.println("Choose a subject:");
                     System.out.println("\t[1] Object Oriented Programming \n\t[2] Data Structure \n\t[3] Art Appreciation \n\t[4] Contemporary World. \n\t[5] Ethics \n\t[6] Platform technology \n\t[7] Pathfit \n\t[8] Human Computer Interaction");
@@ -73,7 +72,8 @@ public class Main {
                     input.nextLine();
 
                     if(choice == 1){
-                        System.out.println("== ADD OBJECT ORIENTED PROGRAMMING ==");
+                        line();
+                        System.out.println("\n== ADD OBJECT ORIENTED PROGRAMMING ==");
                         addTask(oop);
 
                     } else if (choice == 2) {
@@ -115,9 +115,12 @@ public class Main {
 
                     Student.displayAllStudent();
                     oop.displayTask();
+                    dataStructures.displayTask();
                     pressEnterToContinue();
 
                 } else if (transaction == 6) {
+                    System.out.println("Summary");
+                } else if (transaction == 7) {
                     input.nextLine();
                     System.out.print("=> Assistant: Are you sure you want to exit the app?\nThis will discard all changes in the app! (Yes/No): ");
                     String answer = input.nextLine();
@@ -147,11 +150,10 @@ public class Main {
         do{
 
             line();
-            System.out.println("\nREGISTER");
+            System.out.println("\n=> REGISTER <=");
 
             System.out.print("First Name: ");
             String firstName = input.nextLine();
-            input.nextLine();
 
             System.out.print("Last Name: ");
             String lastName = input.nextLine();
@@ -180,11 +182,12 @@ public class Main {
             System.out.print("Program: ");
             String program = input.nextLine().toUpperCase();
 
-            System.out.print("Do you want to SAVE this information?(Yes/No): " );
+            System.out.print("=> Assistant: Do you want to SAVE this information?(Yes/No): " );
             String ans = input.nextLine();
 
             if (ans.equalsIgnoreCase("yes")) {
-                System.out.println("=> Assistant: Welcome, " + firstName + "!");
+                line();
+                System.out.println("\n=> Assistant: Welcome, " + firstName + "!");
                 pressEnterToContinue();
                 line();
 
@@ -247,21 +250,23 @@ public class Main {
     public static void addTask(Subject subject){
         Scanner input = new Scanner(System.in);
 
-        System.out.println("== TASK ==");
-        System.out.println("Choose a subject:");
-        System.out.println("\t1. Exam \n\t2. Laboratory \n\t3. Group Project \n\t 4. Presentation \n\t5. Assignment");
+        line();
+        System.out.println("\n== TASK ==");
+        System.out.println("Choose a Task:");
+        System.out.println("\t[1] Exam \n\t[2] Laboratory \n\t[3] Group Project \n\t[4] Presentation \n\t[5] Assignment");
         System.out.print("Task: ");
         int choice = input.nextInt();
 
         if (choice == 1){
-            System.out.println("== ADD EXAM ==");
+            line();
+            System.out.println("\n== ADD EXAM ==");
             input.nextLine();
 
             System.out.print("Title: ");
             String title = input.nextLine();
 
 
-            System.out.print("Priority Level: ");
+            System.out.print("Priority Level (High, Medium, Low): ");
             String priorityLevel = input.nextLine();
 
 
@@ -273,7 +278,7 @@ public class Main {
             int month = input.nextInt();
             input.nextLine();
 
-            System.out.print("Description: ");
+            System.out.print("Short Description: ");
             String description = input.nextLine();
 
             System.out.print("Topic: ");
@@ -284,7 +289,7 @@ public class Main {
             String location = input.nextLine();
 
 
-            System.out.print("Exam Type: ");
+            System.out.print("Exam Type (e.g. Quiz, Summative Exam, etc.): ");
             String type = input.nextLine();
 
 
@@ -293,12 +298,164 @@ public class Main {
 
         } else if (choice == 2) {
             System.out.println("== ADD LABORATORY ==");
+
+            input.nextLine();
+            System.out.print("Title: ");
+            String title = input.nextLine();
+
+            System.out.print("Priority Level (High, Medium, Low): ");
+            String priorityLevel = input.nextLine();
+
+
+            System.out.print("Due Date: ");
+            int dueDate = input.nextInt();
+            input.nextLine();
+
+            System.out.print("Month: ");
+            int month = input.nextInt();
+            input.nextLine();
+
+            System.out.print("Topic: ");
+            String topic = input.nextLine();
+
+            System.out.print("Short Description: ");
+            String description = input.nextLine();
+
+            System.out.print("Location: ");
+            String location = input.nextLine();
+
+            System.out.print("Do you want to add materials? (yes/no): ");
+            String answer = input.nextLine();
+
+            Laboratory lab = new Laboratory(title, priorityLevel,dueDate,month,topic,description,subject,location);
+            subject.addTask(lab);
+
+            if (answer.equalsIgnoreCase("yes")){
+                System.out.print("Name: ");
+                String name = input.nextLine();
+
+
+                System.out.print("Quantity: ");
+                int quantity = input.nextInt();
+
+                Materials materials = new Materials(name, quantity);
+                lab.addEquipment(materials);
+
+            } else {
+                Materials materials = new Materials("null", 0);
+            }
+
+
         } else if (choice == 3) {
             System.out.println("== ADD GROUP PROJECT ==");
+
+            input.nextLine();
+            System.out.print("Title: ");
+            String title = input.nextLine();
+
+            System.out.print("Priority Level (High, Medium, Low): ");
+            String priorityLevel = input.nextLine();
+
+
+            System.out.print("Due Date: ");
+            int dueDate = input.nextInt();
+            input.nextLine();
+
+            System.out.print("Month: ");
+            int month = input.nextInt();
+            input.nextLine();
+
+            System.out.print("Topic: ");
+            String topic = input.nextLine();
+
+            System.out.print("Short Description: ");
+            String description = input.nextLine();
+
+            System.out.print("Do you want to add materials? (yes/no): ");
+            String answer = input.nextLine();
+
+            GroupProject groupProject = new GroupProject(title, priorityLevel,dueDate,month,topic,description,subject);
+            subject.addTask(groupProject);
+
+            if (answer.equalsIgnoreCase("yes")){
+                System.out.print("Name: ");
+                String name = input.nextLine();
+
+
+                System.out.print("Quantity: ");
+                int quantity = input.nextInt();
+
+                Materials materials = new Materials(name, quantity);
+                groupProject.addEquipment(materials);
+
+            } else {
+                Materials materials = new Materials("null", 0);
+            }
+
         } else if (choice == 4) {
             System.out.println("== ADD PRESENTATION ==");
+
+            input.nextLine();
+            System.out.print("Title: ");
+            String title = input.nextLine();
+
+            System.out.print("Priority Level (High, Medium, Low): ");
+            String priorityLevel = input.nextLine();
+
+
+            System.out.print("Due Date: ");
+            int dueDate = input.nextInt();
+            input.nextLine();
+
+            System.out.print("Month: ");
+            int month = input.nextInt();
+            input.nextLine();
+
+            System.out.print("Topic: ");
+            String topic = input.nextLine();
+
+            System.out.print("Short Description: ");
+            String description = input.nextLine();
+
+            System.out.print("Medium (e.g. PowerPoint, Canva, etc.): ");
+            String medium = input.nextLine();
+
+            Presentation presentation = new Presentation(title, priorityLevel,dueDate,month,topic,description,subject,medium);
+            subject.addTask(presentation);
+
         } else if (choice == 5) {
             System.out.println("== ADD ASSIGNMENT ==");
+
+            input.nextLine();
+            System.out.print("Title: ");
+            String title = input.nextLine();
+
+            System.out.print("Priority Level(High, Medium, Low): ");
+            String priorityLevel = input.nextLine();
+
+
+            System.out.print("Due Date: ");
+            int dueDate = input.nextInt();
+            input.nextLine();
+
+            System.out.print("Month: ");
+            int month = input.nextInt();
+            input.nextLine();
+
+            System.out.print("Topic: ");
+            String topic = input.nextLine();
+
+            System.out.print("Short Description: ");
+            String description = input.nextLine();
+
+            System.out.print("Format (e.g. Soft copy, Hard copy, etc): ");
+            String format = input.nextLine();
+
+            System.out.print("Type (e.g. Essay, Module, etc): ");
+            String type = input.nextLine();
+
+            Assignment assignment = new Assignment(title, priorityLevel,dueDate,month,topic,description,subject,format, type);
+            subject.addTask(assignment);
         }
     }
 
