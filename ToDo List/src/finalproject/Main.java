@@ -65,38 +65,54 @@ public class Main {
 
 
                 if(transaction == 1){
-                    System.out.println("==========> Add Task <==========");
-                    System.out.println("Choose a subject:");
+                    line();
+                    System.out.println("\n==> ADD TASK <==");
+                    System.out.println("Instruction: Choose a subject");
                     System.out.println("\t[1] Object Oriented Programming \n\t[2] Data Structure \n\t[3] Art Appreciation \n\t[4] Contemporary World. \n\t[5] Ethics \n\t[6] Platform technology \n\t[7] Pathfit \n\t[8] Human Computer Interaction");
-                    System.out.print("Subject: ");
+                    line();
+
+                    System.out.print("\nSubject: ");
                     int choice = input.nextInt();
                     input.nextLine();
 
                     if(choice == 1){
+                        System.out.println("\n\n");
                         line();
-                        System.out.println("\n== ADD OBJECT ORIENTED PROGRAMMING ==");
+                        System.out.println("\n==> SUBJECT: ADD OBJECT ORIENTED PROGRAMMING");
                         addTask(oop);
 
                     } else if (choice == 2) {
-                        System.out.println("== ADD DATA STRUCTURES ==");
+                        System.out.println("\n\n");
+                        line();
+                        System.out.println("\n==> SUBJECT: ADD DATA STRUCTURES");
                         addTask(dataStructures);
                     } else if (choice == 3) {
                         System.out.println("=ADD ART APPRECIATION=");
                         addTask(art);
                     } else if (choice == 4) {
-                        System.out.println("=ADD CONTEMPORARY WORLD=");
+                        System.out.println("\n\n");
+                        line();
+                        System.out.println("\n==> SUBJECT: ADD CONTEMPORARY WORLD=");
                         addTask(contemporary);
                     } else if (choice == 5) {
-                        System.out.println("=ADD ETHICS=");
+                        System.out.println("\n\n");
+                        line();
+                        System.out.println("\n==> SUBJECT: ADD ETHICS=");
                         addTask(ethics);
                     } else if (choice == 6) {
-                        System.out.println("=ADD PLATFORM TECHNOLOGY=");
+                        System.out.println("\n\n");
+                        line();
+                        System.out.println("\n ==> SUBJECT: ADD PLATFORM TECHNOLOGY=");
                         addTask(platTech);
                     } else if (choice == 7) {
-                        System.out.println("=ADD PATHFIT=");
+                        System.out.println("\n\n");
+                        line();
+                        System.out.println("==> SUBJECT: ADD PATHFIT");
                         addTask(pathfit);
                     } else if (choice == 8) {
-                        System.out.println("=ADD HUMAN COMPUTER INTERACTION=");
+                        System.out.println("\n\n");
+                        line();
+                        System.out.println("==> SUBJECT: ADD HUMAN COMPUTER INTERACTION=");
                         addTask(hci);
                     }
 
@@ -128,6 +144,13 @@ public class Main {
                     Student.displayAllStudent();
                     oop.displayTask();
                     dataStructures.displayTask();
+                    art.displayTask();
+                    contemporary.displayTask();
+                    ethics.displayTask();
+                    platTech.displayTask();
+                    pathfit.displayTask();
+                    hci.displayTask();
+
                     pressEnterToContinue();
 
                 } else if (transaction == 6) {
@@ -262,51 +285,70 @@ public class Main {
     public static void addTask(Subject subject){
         Scanner input = new Scanner(System.in);
 
-        line();
-        System.out.println("\n== TASK ==");
-        System.out.println("Choose a Task:");
+        boolean loop = false;
+        String response;
+
+        System.out.println("Choose a Task Type:");
         System.out.println("\t[1] Exam \n\t[2] Laboratory \n\t[3] Group Project \n\t[4] Presentation \n\t[5] Assignment");
-        System.out.print("Task: ");
+        line();
+        System.out.print("\nTask (e.g. 1): ");
         int choice = input.nextInt();
 
         if (choice == 1){
-            line();
-            System.out.println("\n== ADD EXAM ==");
-            input.nextLine();
+            do {
+                line();
+                System.out.println("\n== ADD EXAM ==");
+                System.out.println("Instruction(s): You can now add Exam as Task! ");
+                input.nextLine();
 
-            System.out.print("Title: ");
-            String title = input.nextLine();
-
-
-            System.out.print("Priority Level (High, Medium, Low): ");
-            String priorityLevel = input.nextLine();
+                System.out.print("\tTitle: ");
+                String title = input.nextLine();
 
 
-            System.out.print("Due Date: ");
-            int dueDate = input.nextInt();
-            input.nextLine();
-
-            System.out.print("Month: ");
-            int month = input.nextInt();
-            input.nextLine();
-
-            System.out.print("Short Description: ");
-            String description = input.nextLine();
-
-            System.out.print("Topic: ");
-            String topic = input.nextLine();
+                System.out.print("\tPriority Level (High, Medium, Low): ");
+                String priorityLevel = input.nextLine();
 
 
-            System.out.print("Location: ");
-            String location = input.nextLine();
+                System.out.print("\tDue Date: ");
+                int dueDate = input.nextInt();
+                input.nextLine();
+
+                System.out.print("\tMonth: ");
+                int month = input.nextInt();
+                input.nextLine();
+
+                System.out.print("\tShort Description: ");
+                String description = input.nextLine();
+
+                System.out.print("\tTopic: ");
+                String topic = input.nextLine();
 
 
-            System.out.print("Exam Type (e.g. Quiz, Summative Exam, etc.): ");
-            String type = input.nextLine();
+                System.out.print("\tLocation: ");
+                String location = input.nextLine();
 
 
-            Exam exam = new Exam(title, priorityLevel,dueDate,month,topic,description,subject,location,type);
-            subject.addTask(exam);
+                System.out.print("\tExam Type (e.g. Quiz, Summative Exam, etc.): ");
+                String type = input.nextLine();
+
+
+
+                System.out.print("Do you want to save changes? (Yes/No): ");
+                response = input.nextLine();
+
+                if (response.equalsIgnoreCase("Yes")){
+                    Exam exam = new Exam(title, priorityLevel,dueDate,month,topic,description,subject,location,type);
+                    subject.addTask(exam);
+
+                    System.out.println("Changes saved!");
+                    pressEnterToContinue();
+                    loop = false;
+                } else {
+                    loop = true;
+                }
+
+                input.nextLine();
+            }while (loop);
 
         } else if (choice == 2) {
             System.out.println("== ADD LABORATORY ==");
@@ -390,7 +432,7 @@ public class Main {
             subject.addTask(groupProject);
 
             if (answer.equalsIgnoreCase("yes")){
-                System.out.print("Name: ");
+                System.out.print("Material 2Name: ");
                 String name = input.nextLine();
 
 
