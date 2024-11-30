@@ -5,8 +5,8 @@ public class Assignment extends Task{
     private String type;
 
 
-    public Assignment(String title, String priorityLevel, int dueDate, int month, String topic, String description, Subject subject, String submissionFormat, String type) {
-        super(title, priorityLevel, dueDate, month, topic, description, subject);
+    public Assignment(String title, String priorityLevel, int dueDate, int month, int year, String topic, String description, Subject subject, String submissionFormat, String type) {
+        super(title, priorityLevel, dueDate, month, year, topic, description, subject);
         this.submissionFormat = submissionFormat;
         this.type = type;
     }

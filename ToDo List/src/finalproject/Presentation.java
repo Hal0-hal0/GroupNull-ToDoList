@@ -3,8 +3,8 @@ package finalproject;
 public class Presentation extends Task{
     private String medium;
 
-    public Presentation(String title, String priorityLevel, int dueDate, int month, String topic, String description, Subject subject, String medium) {
-        super(title, priorityLevel, dueDate, month, topic, description, subject);
+    public Presentation(String title, String priorityLevel, int dueDate, int month, int year, String topic, String description, Subject subject, String medium) {
+        super(title, priorityLevel, dueDate, month, year, topic, description, subject);
         this.medium = medium;
     }
 

@@ -5,8 +5,9 @@ import java.util.TreeMap;
 public class GroupProject extends Task implements  Equipment{
     private TreeMap<String, Materials> equipment;
 
-    public GroupProject(String title, String priorityLevel, int dueDate, int month, String topic, String description, Subject subject) {
-        super(title, priorityLevel, dueDate, month, topic, description, subject);
+
+    public GroupProject(String title, String priorityLevel, int dueDate, int month, int year, String topic, String description, Subject subject) {
+        super(title, priorityLevel, dueDate, month, year, topic, description, subject);
         this.equipment = new TreeMap<>();
     }
 

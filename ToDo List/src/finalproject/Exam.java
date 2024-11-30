@@ -3,8 +3,9 @@ package finalproject;
 public class Exam extends Activity{
     private String examType;
 
-    public Exam(String title, String priorityLevel, int dueDate, int month, String topic, String description, Subject subject, String location, String examType) {
-        super(title, priorityLevel, dueDate, month, topic, description, subject, location);
+
+    public Exam(String title, String priorityLevel, int dueDate, int month, int year, String topic, String description, Subject subject, String location, String examType) {
+        super(title, priorityLevel, dueDate, month, year, topic, description, subject, location);
         this.examType = examType;
     }
 

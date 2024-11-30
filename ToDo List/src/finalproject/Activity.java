@@ -4,8 +4,8 @@ public class Activity extends Task{
     private String location;
 
 
-    public Activity(String title, String priorityLevel, int dueDate, int month, String topic, String description, Subject subject, String location) {
-        super(title, priorityLevel, dueDate, month, topic, description, subject);
+    public Activity(String title, String priorityLevel, int dueDate, int month, int year, String topic, String description, Subject subject, String location) {
+        super(title, priorityLevel, dueDate, month, year, topic, description, subject);
         this.location = location;
     }
 

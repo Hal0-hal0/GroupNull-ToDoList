@@ -5,8 +5,8 @@
     public class Laboratory extends Activity implements  Equipment{
         private TreeMap<String,Materials> equipment;
 
-        public Laboratory(String title, String priorityLevel, int dueDate, int month, String topic, String description, Subject subject, String location) {
-            super(title, priorityLevel, dueDate, month, topic, description, subject, location);
+        public Laboratory(String title, String priorityLevel, int dueDate, int month, int year, String topic, String description, Subject subject, String location) {
+            super(title, priorityLevel, dueDate, month, year, topic, description, subject, location);
             this.equipment = new TreeMap<>();
         }
 
