@@ -91,16 +91,10 @@ public class Subject {
 
         for(Task e : tasks){
             counter++;
-//            System.out.println(counter +". "+ e.getTitle(counter - 1));
             line();
-            System.out.println("\n==> TASK "+counter + " <==");
-            e.display();
+            System.out.println("\n==> TASK ["+counter + "] | Title: " + e.getTitle());
             line();
         }
-
-
-        //1.ieghreh
-        // 2. ejgiroh
 
         line();
         System.out.print("\nChoose a Task: ");
@@ -146,8 +140,8 @@ public class Subject {
         }
     }
 
-    public void finishedTaskCounter(){
-        System.out.println("==> Finished Tasks: "+markedAsDone.size());
+    public int finishedTaskCounter(){
+        return markedAsDone.size();
     }
 
     //=====================add Tasks=====================
@@ -168,4 +162,10 @@ public class Subject {
         }
     }
 
+    public int taskCounter() {
+        return tasks.size();
+    }
 }
+
+
+

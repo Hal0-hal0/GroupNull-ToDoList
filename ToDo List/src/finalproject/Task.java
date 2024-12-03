@@ -110,7 +110,7 @@ public abstract class Task {
     public void deadlineTracker(int date, int month, int year){
 
         LocalDate deadline = LocalDate.of(year,month,date);
-        LocalDate currentDate =LocalDate.now();
+        LocalDate currentDate = LocalDate.now();
 
         long daysLeft = ChronoUnit.DAYS.between(currentDate,deadline);
 
@@ -123,6 +123,7 @@ public abstract class Task {
         }
 
     }
+
 
 
 

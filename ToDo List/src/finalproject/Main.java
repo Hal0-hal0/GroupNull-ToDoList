@@ -14,6 +14,9 @@ public class Main {
         Subject pathfit = new Subject("PATHFIT 3", "Daanoy Christine Joy F", "PATHFIT 3", 3, 1, "Placeholder", "Placeholder", "Placeholder");
         Subject hci = new Subject("Human-Computer Interaction 1", "Payunan Ryan Christian", "PATHFIT 3", 3, 1, "Placeholder", "Placeholder", "Placeholder");
 
+        //DONT DELETE THESE COMMENTS! hihi
+
+
         //To add equipment (if a subject needs equipment/materials)
 //        lab1.addEquipment(mat1);
 
@@ -117,17 +120,43 @@ public class Main {
                     }
 
                 } else if (transaction == 2) {
-                    System.out.println("==> Delete task and Mark as Done <==");
-                    //oop.displayTaskTitle();
-                    //Method
+                    line();
 
-                    System.out.println("Choose a subject:");
-                    System.out.println("\t[1] Object Oriented Programming \n\t[2] Data Structure \n\t[3] Art Appreciation \n\t[4] Contemporary World. \n\t[5] Ethics \n\t[6] Platform technology \n\t[7] Pathfit \n\t[8] Human Computer Interaction");
-                    System.out.print("Subject: ");
+                    System.out.println("\n          ==> DELETE AND MARK AS DONE <==");
+                    System.out.println("Instruction: Choose a subject that you want to DELETE and MARK AS DONE.");
+                    thinLine();
+                    System.out.println("\n\t    SUBJECT NAME                 | PENDING | FINISHED");
+                    System.out.println("\t[1] Object Oriented Programming " + " |    " + oop.taskCounter() + "         " +  oop.finishedTaskCounter());
+                    System.out.println("\t[2] Data Structure  " + "             |    " + dataStructures.taskCounter()+ "         " +  dataStructures.finishedTaskCounter());
+                    System.out.println("\t[3] Art Appreciation" + "             |    " + art.taskCounter() + "         " +  art.finishedTaskCounter());
+                    System.out.println("\t[4] Contemporary World " + "          |    " + contemporary.taskCounter() + "         " +  contemporary.finishedTaskCounter());
+                    System.out.println("\t[5] Ethics " + "                      |    " + ethics.taskCounter() + "         " +  ethics.finishedTaskCounter());
+                    System.out.println("\t[6] Platform technology " + "         |    " + platTech.taskCounter() + "         " +  platTech.finishedTaskCounter());
+                    System.out.println("\t[7] Pathfit " + "                     |    " + pathfit.taskCounter() + "         " +  pathfit.finishedTaskCounter());
+                    System.out.println("\t[8] Human Computer Interaction " + "  |    " + hci.taskCounter() + "         " +  hci.finishedTaskCounter());
+                    thinLine();
+
+                    System.out.print("\nSubject: ");
                     int choice = input.nextInt();
 
                     if (choice == 1){
                         oop.displayTaskTitle();
+                    } else if (choice == 2) {
+                        dataStructures.displayTaskTitle();
+                    } else if (choice== 3) {
+                        art.displayTaskTitle();
+                    } else if (choice == 4) {
+                        contemporary.displayTaskTitle();
+                    } else if (choice == 5) {
+                        ethics.displayTaskTitle();
+                    } else if (choice == 6) {
+                        platTech.displayTaskTitle();
+                    } else if (choice == 7) {
+                        pathfit.displayTaskTitle();
+                    } else if (choice == 8) {
+                        hci.displayTaskTitle();
+                    } else {
+                        System.out.println("=> Assistant: Choose only from 1-8!");
                     }
 
                 } else if (transaction == 3) {
@@ -662,8 +691,14 @@ public class Main {
     }
 
     public static void line(){
-        for(int i = 0; i < 30; i++){
+        for(int i = 0; i < 35; i++){
             System.out.print("==");
+        }
+    }
+
+    public static void thinLine(){
+        for(int i = 0; i < 35; i++){
+            System.out.print("--");
         }
     }
 
