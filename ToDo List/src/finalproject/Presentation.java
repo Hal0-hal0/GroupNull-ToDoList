@@ -20,7 +20,8 @@ public class Presentation extends Task{
 
     @Override
     public void display() {
-        System.out.println("Medium: " + this.medium);
         super.display();
+        System.out.println("\tMedium: " + this.medium);
+
     }
 }

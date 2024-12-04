@@ -30,7 +30,7 @@ public class Materials {
     }
 
     public void display(){
-        System.out.println("\n= MATERIALS =");
+        System.out.println("\n== MATERIALS ==");
         System.out.println(this);
     }
 }

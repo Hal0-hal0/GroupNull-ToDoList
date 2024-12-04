@@ -19,6 +19,6 @@ public class Activity extends Task{
 
     public void display(){
         super.display();
-        System.out.println("Location: " + this.location);
+        System.out.println("\tLocation: " + this.location);
     }
 }

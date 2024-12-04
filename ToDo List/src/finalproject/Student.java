@@ -97,12 +97,12 @@ public class Student {
     // ========================Display=============================
     public void display(){
         System.out.println("\n= STUDENT DETAILS =");
-        System.out.println("Full Name: " + this.getFullName());
-        System.out.println("ID: " + this.studentId);
-        System.out.println("Address: " + this.address);
-        System.out.println("Year Level: " + this.yearLevel);
-        System.out.println("Section: " + this.section);
-        System.out.println("Program: "  + this.program);
+        System.out.println("\tFull Name: " + this.getFullName());
+        System.out.println("\tID: " + this.studentId);
+        System.out.println("\tAddress: " + this.address);
+        System.out.println("\tYear Level: " + this.yearLevel);
+        System.out.println("\tSection: " + this.section);
+        System.out.println("\tProgram: "  + this.program);
 
     }
 

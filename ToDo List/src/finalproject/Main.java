@@ -1,6 +1,8 @@
 package finalproject;
 
+import java.util.LinkedList;
 import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
@@ -54,20 +56,20 @@ public class Main {
         //register();
 
 
-        while (true){
+        while (true) {
             System.out.println("\n ");
             line();
             System.out.println(" ");
 
 
-            try{
+            try {
                 System.out.println("Let's organize things up!");
-                System.out.println("\t[1] Add Task \n\t[2] Delete and Mark as Done\n\t[3] Search a Task \n\t[4] Update \n\t[5] Display \n\t[6] Summary \n\t[7] Exit");
+                System.out.println("\t[1] Add Task \n\t[2] Delete and Mark as Done\n\t[3] Edit/Update \n\t[4] Display \n\t[5] Summary \n\t[6] Exit");
                 System.out.print("Choose a transaction (Type 1): ");
                 int transaction = input.nextInt();
 
 
-                if(transaction == 1){
+                if (transaction == 1) {
                     line();
                     System.out.println("\n==> ADD TASK <==");
                     System.out.println("Instruction: Choose a subject");
@@ -78,7 +80,7 @@ public class Main {
                     int choice = input.nextInt();
                     input.nextLine();
 
-                    if(choice == 1){
+                    if (choice == 1) {
                         System.out.println("\n\n");
                         line();
                         System.out.println("\n==> SUBJECT: ADD OBJECT ORIENTED PROGRAMMING");
@@ -126,24 +128,24 @@ public class Main {
                     System.out.println("Instruction: Choose a subject that you want to DELETE and MARK AS DONE.");
                     thinLine();
                     System.out.println("\n\t    SUBJECT NAME                 | PENDING | FINISHED");
-                    System.out.println("\t[1] Object Oriented Programming " + " |    " + oop.taskCounter() + "         " +  oop.finishedTaskCounter());
-                    System.out.println("\t[2] Data Structure  " + "             |    " + dataStructures.taskCounter()+ "         " +  dataStructures.finishedTaskCounter());
-                    System.out.println("\t[3] Art Appreciation" + "             |    " + art.taskCounter() + "         " +  art.finishedTaskCounter());
-                    System.out.println("\t[4] Contemporary World " + "          |    " + contemporary.taskCounter() + "         " +  contemporary.finishedTaskCounter());
-                    System.out.println("\t[5] Ethics " + "                      |    " + ethics.taskCounter() + "         " +  ethics.finishedTaskCounter());
-                    System.out.println("\t[6] Platform technology " + "         |    " + platTech.taskCounter() + "         " +  platTech.finishedTaskCounter());
-                    System.out.println("\t[7] Pathfit " + "                     |    " + pathfit.taskCounter() + "         " +  pathfit.finishedTaskCounter());
-                    System.out.println("\t[8] Human Computer Interaction " + "  |    " + hci.taskCounter() + "         " +  hci.finishedTaskCounter());
+                    System.out.println("\t[1] Object Oriented Programming " + " |    " + oop.taskCounter() + "         " + oop.finishedTaskCounter());
+                    System.out.println("\t[2] Data Structure  " + "             |    " + dataStructures.taskCounter() + "         " + dataStructures.finishedTaskCounter());
+                    System.out.println("\t[3] Art Appreciation" + "             |    " + art.taskCounter() + "         " + art.finishedTaskCounter());
+                    System.out.println("\t[4] Contemporary World " + "          |    " + contemporary.taskCounter() + "         " + contemporary.finishedTaskCounter());
+                    System.out.println("\t[5] Ethics " + "                      |    " + ethics.taskCounter() + "         " + ethics.finishedTaskCounter());
+                    System.out.println("\t[6] Platform technology " + "         |    " + platTech.taskCounter() + "         " + platTech.finishedTaskCounter());
+                    System.out.println("\t[7] Pathfit " + "                     |    " + pathfit.taskCounter() + "         " + pathfit.finishedTaskCounter());
+                    System.out.println("\t[8] Human Computer Interaction " + "  |    " + hci.taskCounter() + "         " + hci.finishedTaskCounter());
                     thinLine();
 
                     System.out.print("\nSubject: ");
                     int choice = input.nextInt();
 
-                    if (choice == 1){
+                    if (choice == 1) {
                         oop.displayTaskTitle();
                     } else if (choice == 2) {
                         dataStructures.displayTaskTitle();
-                    } else if (choice== 3) {
+                    } else if (choice == 3) {
                         art.displayTaskTitle();
                     } else if (choice == 4) {
                         contemporary.displayTaskTitle();
@@ -158,45 +160,80 @@ public class Main {
                     } else {
                         System.out.println("=> Assistant: Choose only from 1-8!");
                     }
-
                 } else if (transaction == 3) {
-                    System.out.println("Search a task");
-                    //Method
-                } else if (transaction == 4) {
                     System.out.println("Update");
                     //Method
-                } else if (transaction == 5) {
+                } else if (transaction == 4) {
                     System.out.println("Display");
                     //Method
                     //display();
+                    line();
 
-                    System.out.println("== DISPLAY == ");
-                    
+                    System.out.println("\n                          ==> DISPLAY <==");
+                    System.out.println("Instruction: Choose a subject that you want to DELETE and MARK AS DONE.");
+                    thinLine();
+                    System.out.println("\n\t    SUBJECT NAME                 | PENDING | FINISHED");
+                    System.out.println("\t[1] Object Oriented Programming " + " |    " + oop.taskCounter() + "         " + oop.finishedTaskCounter());
+                    System.out.println("\t[2] Data Structure  " + "             |    " + dataStructures.taskCounter() + "         " + dataStructures.finishedTaskCounter());
+                    System.out.println("\t[3] Art Appreciation" + "             |    " + art.taskCounter() + "         " + art.finishedTaskCounter());
+                    System.out.println("\t[4] Contemporary World " + "          |    " + contemporary.taskCounter() + "         " + contemporary.finishedTaskCounter());
+                    System.out.println("\t[5] Ethics " + "                      |    " + ethics.taskCounter() + "         " + ethics.finishedTaskCounter());
+                    System.out.println("\t[6] Platform technology " + "         |    " + platTech.taskCounter() + "         " + platTech.finishedTaskCounter());
+                    System.out.println("\t[7] Pathfit " + "                     |    " + pathfit.taskCounter() + "         " + pathfit.finishedTaskCounter());
+                    System.out.println("\t[8] Human Computer Interaction " + "  |    " + hci.taskCounter() + "         " + hci.finishedTaskCounter());
+                    thinLine();
 
+                    System.out.print("\nSubject: ");
+                    int choice = input.nextInt();
 
-                    Student.displayAllStudent();
-                    oop.displayTask();
-                    dataStructures.displayTask();
-                    art.displayTask();
-                    contemporary.displayTask();
-                    ethics.displayTask();
-                    platTech.displayTask();
-                    pathfit.displayTask();
-                    hci.displayTask();
+                    if (choice == 1) {
+                        System.out.println("==> DISPLAY OBJECT ORIENTED PROGRAMMING");
+                        oop.displaySort();
+                    } else if (choice == 2) {
+                        System.out.println("==> DISPLAY DATA STRUCTURES");
+                        dataStructures.displaySort();
+
+                    } else if (choice == 3) {
+                        System.out.println("==> DISPLAY ART APPRECIATION");
+                        art.displaySort();
+
+                    } else if (choice == 4) {
+                        System.out.println("==> DISPLAY CONTEMPORARY WORLD");
+                        contemporary.displaySort();
+
+                    } else if (choice == 5) {
+                        System.out.println("==> DISPLAY ETHICS");
+                        ethics.displaySort();
+
+                    } else if (choice == 6) {
+                        System.out.println("==> DISPLAY PLATFORM TECHNOLOGIES");
+                        platTech.displaySort();
+
+                    } else if (choice == 7) {
+                        System.out.println("==> DISPLAY PATHFIT");
+                        pathfit.displaySort();
+
+                    } else if (choice == 8) {
+                        System.out.println("==> DISPLAY HUMAN COMPUTER INTERACTION");
+                        hci.displaySort();
+
+                    } else {
+                        System.out.println("=> Assistant: Choose only from 1-8!");
+                    }
 
                     pressEnterToContinue();
 
-                } else if (transaction == 6) {
+                } else if (transaction == 5) {
                     System.out.println("Summary");
-                } else if (transaction == 7) {
+                } else if (transaction == 6) {
                     input.nextLine();
                     System.out.print("=> Assistant: Are you sure you want to exit the app?\nThis will discard all changes in the app! (Yes/No): ");
                     String answer = input.nextLine();
 
-                    if (answer.equalsIgnoreCase("Yes")){
+                    if (answer.equalsIgnoreCase("Yes")) {
                         System.out.println("Exiting the app...");
                         break;
-                    }else {
+                    } else {
                         System.out.println("Returning to menu!");
                         pressEnterToContinue();
                     }
@@ -208,14 +245,17 @@ public class Main {
         }
 
     }
+
     //========================== METHODS ===========================
+
+
     //Login / Registration
     public static void register() {
         Scanner input = new Scanner(System.in);
 
         // REGISTRATION
         boolean isValid = false;
-        do{
+        do {
 
             line();
             System.out.println("\n=> REGISTER <=");
@@ -234,7 +274,7 @@ public class Main {
 
             char section = 'A';
 
-            do{
+            do {
                 System.out.print("Section (A/B): ");
                 section = input.next().toUpperCase().charAt(0);
 
@@ -245,12 +285,12 @@ public class Main {
                     System.out.println("invalid input!");
                     isValid = true;
                 }
-            }while (isValid);
+            } while (isValid);
 
             System.out.print("Program: ");
             String program = input.nextLine().toUpperCase();
 
-            System.out.print("=> Assistant: Do you want to SAVE this information?(Yes/No): " );
+            System.out.print("=> Assistant: Do you want to SAVE this information?(Yes/No): ");
             String ans = input.nextLine();
 
             if (ans.equalsIgnoreCase("yes")) {
@@ -287,15 +327,16 @@ public class Main {
                 System.out.println(" ");
                 isValid = false;
 
-            }else {
+            } else {
                 isValid = true;
             }
 
-        }while (isValid);
+        } while (isValid);
 
     }
+
     //Menu Methods
-    public static void add(){
+    public static void add() {
         Scanner input = new Scanner(System.in);
         System.out.println("==========> Add Task <==========");
         System.out.println("Choose a subject:");
@@ -304,7 +345,7 @@ public class Main {
         int choice = input.nextInt();
         input.nextLine();
 
-        if(choice == 1){
+        if (choice == 1) {
             System.out.println("== ADD OBJECT ORIENTED PROGRAMMING ==");
             Subject oop = new Subject("Object-Oriented Programming", "Harder Keia Joy", "CIT 207", 5, 2, "Placeholder", "CICT", "Major");
 
@@ -315,7 +356,7 @@ public class Main {
 
     }
 
-    public static void addTask(Subject subject){
+    public static void addTask(Subject subject) {
         Scanner input = new Scanner(System.in);
 
         boolean loop = false;
@@ -327,7 +368,7 @@ public class Main {
         System.out.print("\nTask (e.g. 1): ");
         int choice = input.nextInt();
 
-        if (choice == 1){ //EXAM
+        if (choice == 1) { //EXAM
             do {
                 line();
                 System.out.println("\n== ADD EXAM ==");
@@ -342,7 +383,6 @@ public class Main {
                 String priorityLevel = input.nextLine();
 
 
-
                 int dueDate;
                 int month;
 
@@ -350,7 +390,7 @@ public class Main {
                     System.out.print("\tDue Date (1-30): ");
                     dueDate = input.nextInt();
 
-                    if (dueDate > 30){
+                    if (dueDate > 30) {
                         System.out.println("Hmm... it seems like there is no " + dueDate + " in the calendar. Let's try again!");
                         pressEnterToContinue();
                         loop = true;
@@ -362,13 +402,13 @@ public class Main {
                     System.out.print("\tMonth (e.g 11): ");
                     month = input.nextInt();
 
-                    if (month > 12){
+                    if (month > 12) {
                         System.out.println("Hmm... it seems like there is no " + month + " in the calendar. Let's try again!");
                         pressEnterToContinue();
                         loop = true;
                     }
                     input.nextLine();
-                }while (loop);
+                } while (loop);
 
                 System.out.print("\tYear (e.g 2024): ");
                 int year = input.nextInt();
@@ -389,12 +429,11 @@ public class Main {
                 String type = input.nextLine();
 
 
-
                 System.out.print("Do you want to save changes? (Yes/No): ");
                 response = input.nextLine();
 
-                if (response.equalsIgnoreCase("Yes")){
-                    Exam exam = new Exam(title, priorityLevel,dueDate,month,year,topic,description,subject,location,type);
+                if (response.equalsIgnoreCase("Yes")) {
+                    Exam exam = new Exam(title, priorityLevel, dueDate, month, year, topic, description, subject, location, type);
                     subject.addTask(exam);
 
                     System.out.println("Changes saved!");
@@ -405,282 +444,324 @@ public class Main {
                 }
 
                 input.nextLine();
-            }while (loop);
+            } while (loop);
 
         } else if (choice == 2) { //LAB
             System.out.println("== ADD LABORATORY ==");
 
-            input.nextLine();
-            System.out.print("\tTitle: ");
-            String title = input.nextLine();
-
-            System.out.print("\tPriority Level (High, Medium, Low): ");
-            String priorityLevel = input.nextLine();
-
-
-            int dueDate;
-            int month;
+            boolean repeat;
 
             do {
-                System.out.print("\tDue Date (1-30): ");
-                dueDate = input.nextInt();
+                repeat = false;
 
-                if (dueDate > 30){
-                    System.out.println("Hmm... it seems like there is no " + dueDate + " in the calendar. Let's try again!");
-                    pressEnterToContinue();
-                    loop = true;
-                }
                 input.nextLine();
-            } while (loop);
+                System.out.print("\tTitle: ");
+                String title = input.nextLine();
 
-            do {
-                System.out.print("\tMonth (e.g 11): ");
-                month = input.nextInt();
+                System.out.print("\tPriority Level (High, Medium, Low): ");
+                String priorityLevel = input.nextLine();
 
-                if (month > 12){
-                    System.out.println("Hmm... it seems like there is no " + month + " in the calendar. Let's try again!");
-                    pressEnterToContinue();
-                    loop = true;
-                }
+                int dueDate;
+                do {
+                    System.out.print("\tDue Date (1-30): ");
+                    dueDate = input.nextInt();
+                    if (dueDate < 1 || dueDate > 30) {
+                        System.out.println("Invalid date. Please enter a number between 1 and 30.");
+                        pressEnterToContinue();
+                    }
+                } while (dueDate < 1 || dueDate > 30);
+
+                int month;
+                do {
+                    System.out.print("\tMonth (1-12): ");
+                    month = input.nextInt();
+                    if (month < 1 || month > 12) {
+                        System.out.println("Invalid month. Please enter a number between 1 and 12.");
+                        pressEnterToContinue();
+                    }
+                } while (month < 1 || month > 12);
+
+                System.out.print("\tYear (e.g 2024): ");
+                int year = input.nextInt();
                 input.nextLine();
-            }while (loop);
 
-            System.out.print("\tYear (e.g 2024): ");
-            int year = input.nextInt();
-            input.nextLine();
+                System.out.print("\tTopic: ");
+                String topic = input.nextLine();
 
-            System.out.print("\tTopic: ");
-            String topic = input.nextLine();
+                System.out.print("\tShort Description: ");
+                String description = input.nextLine();
 
-            System.out.print("\tShort Description: ");
-            String description = input.nextLine();
+                System.out.print("\tLocation: ");
+                String location = input.nextLine();
 
-            System.out.print("\tLocation: ");
-            String location = input.nextLine();
+                Laboratory lab = new Laboratory(title, priorityLevel, dueDate, month, year, topic, description, subject, location);
 
-            System.out.print("Do you want to add materials? (yes/no): ");
-            String answer = input.nextLine();
+                System.out.print("Do you want to add materials? (yes/no): ");
+                String answer = input.nextLine();
 
-            Laboratory lab = new Laboratory(title, priorityLevel,dueDate,month,year,topic,description,subject,location);
-            subject.addTask(lab);
+                if (answer.equalsIgnoreCase("yes")) {
+                    boolean addMoreMaterials;
+                    do {
+                        System.out.print("\tMaterial Name: ");
+                        String name = input.nextLine();
 
-            if (answer.equalsIgnoreCase("yes")){
-                System.out.print("\tName: ");
-                String name = input.nextLine();
+                        System.out.print("\tQuantity: ");
+                        int quantity = input.nextInt();
+                        input.nextLine();
+
+                        Materials materials = new Materials(name, quantity);
+                        lab.addEquipment(materials);
+
+                        System.out.print("Do you want to add another material? (yes/no): ");
+                        String moreMaterials = input.nextLine();
+                        addMoreMaterials = moreMaterials.equalsIgnoreCase("yes");
+                    } while (addMoreMaterials);
+                }
+
+                System.out.print("Do you want to save changes? (Yes/No): ");
+                String ans = input.nextLine();
+
+                if (ans.equalsIgnoreCase("Yes")) {
+                    subject.addTask(lab);
+                    System.out.println("Changes saved!");
+                    pressEnterToContinue();
+                } else {
+                    System.out.println("Changes discarded. Please try again.");
+                    repeat = true;
+                }
+            } while (repeat);
 
 
-                System.out.print("\tQuantity: ");
-                int quantity = input.nextInt();
-
-                Materials materials = new Materials(name, quantity);
-                lab.addEquipment(materials);
-
-            } else {
-                Materials materials = new Materials("null", 0);
-            }
 
 
         } else if (choice == 3) { //GPROJECT
             System.out.println("== ADD GROUP PROJECT ==");
 
-            input.nextLine();
-            System.out.print("\tTitle: ");
-            String title = input.nextLine();
-
-            System.out.print("\tPriority Level (High, Medium, Low): ");
-            String priorityLevel = input.nextLine();
-
-
-            int dueDate;
-            int month;
+            boolean repeat;
 
             do {
-                System.out.print("\tDue Date (1-30): ");
-                dueDate = input.nextInt();
+                repeat = false;
 
-                if (dueDate > 30){
-                    System.out.println("Hmm... it seems like there is no " + dueDate + " in the calendar. Let's try again!");
-                    pressEnterToContinue();
-                    loop = true;
-                }
                 input.nextLine();
-            } while (loop);
+                System.out.print("\tTitle: ");
+                String title = input.nextLine();
 
-            do {
-                System.out.print("\tMonth (e.g 11): ");
-                month = input.nextInt();
+                System.out.print("\tPriority Level (High, Medium, Low): ");
+                String priorityLevel = input.nextLine();
 
-                if (month > 12){
-                    System.out.println("Hmm... it seems like there is no " + month + " in the calendar. Let's try again!");
-                    pressEnterToContinue();
-                    loop = true;
-                }
+                int dueDate;
+                do {
+                    System.out.print("\tDue Date (1-30): ");
+                    dueDate = input.nextInt();
+                    if (dueDate < 1 || dueDate > 30) {
+                        System.out.println("Invalid date. Please enter a number between 1 and 30.");
+                        pressEnterToContinue();
+                    }
+                } while (dueDate < 1 || dueDate > 30);
+
+                int month;
+                do {
+                    System.out.print("\tMonth (1-12): ");
+                    month = input.nextInt();
+                    if (month < 1 || month > 12) {
+                        System.out.println("Invalid month. Please enter a number between 1 and 12.");
+                        pressEnterToContinue();
+                    }
+                } while (month < 1 || month > 12);
+
+                System.out.print("\tYear (e.g 2024): ");
+                int year = input.nextInt();
                 input.nextLine();
-            }while (loop);
 
-            System.out.print("\tYear (e.g 2024): ");
-            int year = input.nextInt();
-            input.nextLine();
+                System.out.print("\tTopic: ");
+                String topic = input.nextLine();
 
-            System.out.print("\tTopic: ");
-            String topic = input.nextLine();
+                System.out.print("\tShort Description: ");
+                String description = input.nextLine();
 
-            System.out.print("\tShort Description: ");
-            String description = input.nextLine();
+                GroupProject groupProject = new GroupProject(title, priorityLevel, dueDate, month, year, topic, description, subject);
 
-            System.out.print("Do you want to add materials? (yes/no): ");
-            String answer = input.nextLine();
+                System.out.print("Do you want to add materials? (yes/no): ");
+                String answer = input.nextLine();
 
-            GroupProject groupProject = new GroupProject(title, priorityLevel,dueDate,month,year,topic,description,subject);
-            subject.addTask(groupProject);
+                if (answer.equalsIgnoreCase("yes")) {
+                    boolean addMoreMaterials;
+                    do {
+                        System.out.print("\tMaterial Name: ");
+                        String name = input.nextLine();
 
-            if (answer.equalsIgnoreCase("yes")){
-                System.out.print("Material 2Name: ");
-                String name = input.nextLine();
+                        System.out.print("\tQuantity: ");
+                        int quantity = input.nextInt();
+                        input.nextLine();
 
+                        Materials materials = new Materials(name, quantity);
+                        groupProject.addEquipment(materials);
 
-                System.out.print("Quantity: ");
-                int quantity = input.nextInt();
+                        System.out.print("Do you want to add another material? (yes/no): ");
+                        String moreMaterials = input.nextLine();
+                        addMoreMaterials = moreMaterials.equalsIgnoreCase("yes");
+                    } while (addMoreMaterials);
+                }
 
-                Materials materials = new Materials(name, quantity);
-                groupProject.addEquipment(materials);
+                System.out.print("Do you want to save changes? (Yes/No): ");
+                String ans = input.nextLine();
 
-            } else {
-                Materials materials = new Materials("null", 0);
-            }
+                if (ans.equalsIgnoreCase("Yes")) {
+                    subject.addTask(groupProject);
+                    System.out.println("Changes saved!");
+                    pressEnterToContinue();
+                } else {
+                    System.out.println("Changes discarded. Please try again.");
+                    repeat = true;
+                }
+            } while (repeat);
+
 
         } else if (choice == 4) { //PRESENTTAIN
-            System.out.println("== ADD PRESENTATION ==");
-
-            input.nextLine();
-            System.out.print("\tTitle: ");
-            String title = input.nextLine();
-
-            System.out.print("\tPriority Level (High, Medium, Low): ");
-            String priorityLevel = input.nextLine();
-
-
-            int dueDate;
-            int month;
+            boolean repeat;
 
             do {
-                System.out.print("\tDue Date (1-30): ");
-                dueDate = input.nextInt();
+                repeat = false;
 
-                if (dueDate > 30){
-                    System.out.println("Hmm... it seems like there is no " + dueDate + " in the calendar. Let's try again!");
-                    pressEnterToContinue();
-                    loop = true;
-                }
+                System.out.println("== ADD PRESENTATION ==");
+
                 input.nextLine();
-            } while (loop);
+                System.out.print("\tTitle: ");
+                String title = input.nextLine();
 
-            do {
-                System.out.print("\tMonth (e.g 11): ");
-                month = input.nextInt();
+                System.out.print("\tPriority Level (High, Medium, Low): ");
+                String priorityLevel = input.nextLine();
 
-                if (month > 12){
-                    System.out.println("Hmm... it seems like there is no " + month + " in the calendar. Let's try again!");
-                    pressEnterToContinue();
-                    loop = true;
-                }
+                int dueDate;
+                do {
+                    System.out.print("\tDue Date (1-30): ");
+                    dueDate = input.nextInt();
+                    if (dueDate < 1 || dueDate > 30) {
+                        System.out.println("Hmm... it seems like there is no " + dueDate + " in the calendar. Let's try again!");
+                        pressEnterToContinue();
+                    }
+                } while (dueDate < 1 || dueDate > 30);
+
+                int month;
+                do {
+                    System.out.print("\tMonth (1-12): ");
+                    month = input.nextInt();
+                    if (month < 1 || month > 12) {
+                        System.out.println("Hmm... it seems like there is no " + month + " in the calendar. Let's try again!");
+                        pressEnterToContinue();
+                    }
+                } while (month < 1 || month > 12);
+
+                System.out.print("\tYear (e.g 2024): ");
+                int year = input.nextInt();
                 input.nextLine();
-            }while (loop);
 
-            System.out.print("\tYear (e.g 2024): ");
-            int year = input.nextInt();
-            input.nextLine();
+                System.out.print("\tTopic: ");
+                String topic = input.nextLine();
 
-            System.out.print("\tTopic: ");
-            String topic = input.nextLine();
+                System.out.print("\tShort Description: ");
+                String description = input.nextLine();
 
-            System.out.print("\tShort Description: ");
-            String description = input.nextLine();
+                System.out.print("\tMedium (e.g. PowerPoint, Canva, etc.): ");
+                String medium = input.nextLine();
 
-            System.out.print("\tMedium (e.g. PowerPoint, Canva, etc.): ");
-            String medium = input.nextLine();
+                System.out.print("Do you want to save changes? (Yes/No): ");
+                String ans = input.nextLine();
 
-            System.out.print("Do you want to save changes? (Yes/No): ");
-            response = input.nextLine();
+                if (ans.equalsIgnoreCase("Yes")) {
+                    Presentation presentation = new Presentation(title, priorityLevel, dueDate, month, year, topic, description, subject, medium);
+                    subject.addTask(presentation);
+                    System.out.println("Changes saved!");
+                    pressEnterToContinue();
+                } else {
+                    System.out.println("Changes discarded. Please try again.");
+                    repeat = true;
+                }
+            } while (repeat);
 
-
-            Presentation presentation = new Presentation(title, priorityLevel,dueDate,month,year,topic,description,subject,medium);
-            subject.addTask(presentation);
 
         } else if (choice == 5) { //ASSIGNMENT
-            System.out.println("== ADD ASSIGNMENT ==");
-
-            input.nextLine();
-            System.out.print("\tTitle: ");
-            String title = input.nextLine();
-
-            System.out.print("\tPriority Level(High, Medium, Low): ");
-            String priorityLevel = input.nextLine();
-
-
-            int dueDate;
-            int month;
+            boolean repeat;
 
             do {
-                System.out.print("\tDue Date (1-30): ");
-                dueDate = input.nextInt();
+                repeat = false;
 
-                if (dueDate > 30){
-                    System.out.println("Hmm... it seems like there is no " + dueDate + " in the calendar. Let's try again!");
-                    pressEnterToContinue();
-                    loop = true;
-                }
+                System.out.println("== ADD ASSIGNMENT ==");
+
                 input.nextLine();
-            } while (loop);
+                System.out.print("\tTitle: ");
+                String title = input.nextLine();
 
-            do {
-                System.out.print("\tMonth (e.g 11): ");
-                month = input.nextInt();
+                System.out.print("\tPriority Level (High, Medium, Low): ");
+                String priorityLevel = input.nextLine();
 
-                if (month > 12){
-                    System.out.println("Hmm... it seems like there is no " + month + " in the calendar. Let's try again!");
+                int dueDate;
+                do {
+                    System.out.print("\tDue Date (1-30): ");
+                    dueDate = input.nextInt();
+                    if (dueDate < 1 || dueDate > 30) {
+                        System.out.println("Hmm... it seems like there is no " + dueDate + " in the calendar. Let's try again!");
+                        pressEnterToContinue();
+                    }
+                } while (dueDate < 1 || dueDate > 30);
+
+                int month;
+                do {
+                    System.out.print("\tMonth (1-12): ");
+                    month = input.nextInt();
+                    if (month < 1 || month > 12) {
+                        System.out.println("Hmm... it seems like there is no " + month + " in the calendar. Let's try again!");
+                        pressEnterToContinue();
+                    }
+                } while (month < 1 || month > 12);
+
+                System.out.print("\tYear (e.g. 2024): ");
+                int year = input.nextInt();
+                input.nextLine(); // Clear buffer
+
+                System.out.print("\tTopic: ");
+                String topic = input.nextLine();
+
+                System.out.print("\tShort Description: ");
+                String description = input.nextLine();
+
+                System.out.print("\tFormat (e.g. Soft copy, Hard copy, etc.): ");
+                String format = input.nextLine();
+
+                System.out.print("\tType (e.g. Essay, Module, etc.): ");
+                String type = input.nextLine();
+
+                System.out.print("Do you want to save changes? (Yes/No): ");
+                String ans = input.nextLine();
+
+                if (ans.equalsIgnoreCase("Yes")) {
+                    Assignment assignment = new Assignment(title, priorityLevel, dueDate, month, year, topic, description, subject, format, type);
+                    subject.addTask(assignment);
+                    System.out.println("Changes saved!");
                     pressEnterToContinue();
-                    loop = true;
+                } else {
+                    System.out.println("Changes discarded. Please try again.");
+                    repeat = true;
                 }
-                input.nextLine();
-            }while (loop);
+            } while (repeat);
 
-            System.out.print("\tYear (e.g 2024): ");
-            int year = input.nextInt();
-            input.nextLine();
-
-            System.out.print("\tTopic: ");
-            String topic = input.nextLine();
-
-            System.out.print("\tShort Description: ");
-            String description = input.nextLine();
-
-            System.out.print("\tFormat (e.g. Soft copy, Hard copy, etc): ");
-            String format = input.nextLine();
-
-            System.out.print("\tType (e.g. Essay, Module, etc): ");
-            String type = input.nextLine();
-
-            Assignment assignment = new Assignment(title, priorityLevel,dueDate,month,year,topic,description,subject,format, type);
-            subject.addTask(assignment);
         }
     }
 
 
     // log out and return to registration
-    public static void logOut(){
+    public static void logOut() {
         System.out.println("LOG-OUT");
         register();
     }
     //Display Methods
 
-    public static void display(Subject subject){
+    public static void display(Subject subject) {
         subject.displayTask();
     }
 
 
-
-// Methods for design purposes
+    // Methods for design purposes
     public static void pressEnterToContinue() {
         System.out.print("Press Enter to continue...");
         try {
@@ -690,14 +771,14 @@ public class Main {
         }
     }
 
-    public static void line(){
-        for(int i = 0; i < 35; i++){
+    public static void line() {
+        for (int i = 0; i < 35; i++) {
             System.out.print("==");
         }
     }
 
-    public static void thinLine(){
-        for(int i = 0; i < 35; i++){
+    public static void thinLine() {
+        for (int i = 0; i < 35; i++) {
             System.out.print("--");
         }
     }

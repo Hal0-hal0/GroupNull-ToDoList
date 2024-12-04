@@ -1,10 +1,6 @@
 package finalproject;
-
-import org.w3c.dom.ls.LSOutput;
-
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
-import java.util.Calendar;
 
 public abstract class Task {
     private String title;
@@ -115,11 +111,11 @@ public abstract class Task {
         long daysLeft = ChronoUnit.DAYS.between(currentDate,deadline);
 
         if (daysLeft > 0) {
-            System.out.println("Your deadline is in " + daysLeft + " day(s).");
+            System.out.println("\tYour deadline is in " + daysLeft + " day(s).");
         } else if (daysLeft == 0) {
-            System.out.println("Your deadline is today!");
+            System.out.println("\tYour deadline is today!");
         } else {
-            System.out.println("The deadline was " + Math.abs(daysLeft)  + " days ago! It's OVERDUE!");
+            System.out.println("\tThe deadline was " + Math.abs(daysLeft)  + " days ago! It's OVERDUE!");
         }
 
     }
@@ -131,13 +127,13 @@ public abstract class Task {
     // ================== DISPLAY =====================
     public void display(){
         System.out.println("\n= TASK DETAILS =");
-        System.out.println("Title: " + this.title);
-        System.out.println("Priority Level: " + this.priorityLevel);
-        System.out.println("Month: " + this.month);
-        System.out.println("Due Date: " + this.dueDate);
+        System.out.println("\tTitle: " + this.title);
+        System.out.println("\tPriority Level: " + this.priorityLevel);
+        System.out.println("\tMonth: " + this.month);
+        System.out.println("\tDue Date: " + this.dueDate);
         this.deadlineTracker(this.dueDate, this.month, this.year);
-        System.out.println("Topic:  " + this.topic);
-        System.out.println("Description: " + this.description);
+        System.out.println("\tTopic:  " + this.topic);
+        System.out.println("\tDescription: " + this.description);
     }
 
 
