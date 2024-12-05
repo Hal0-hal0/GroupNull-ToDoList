@@ -13,6 +13,7 @@ public class Subject {
     public final String department;
     private final String type;
     private LinkedList<Task> tasks;
+
     LinkedList<Task> markedAsDone = new LinkedList<>();
 
     public Subject(String subjectName, String teacher,String subjectId, int credits, int semesterOffered, String fieldStudy, String department, String type) {
@@ -83,26 +84,93 @@ public class Subject {
     public void displaySort(){
         Scanner input = new Scanner(System.in);
 
-        System.out.println("==> Assistant: How do you want to sort your task(s)? ");
-        System.out.println("\t [1] Priority Level");
-        System.out.println("\t [2] Alphabetical Order");
-        System.out.println("\t [3] By Deadline");
-        System.out.println("\t [4] Display All");
-        System.out.print("SORT BY: ");
-        int choice = input.nextInt();
-
-        if (choice == 1){
-            //sorting method
-        } else if (choice == 2) {
-            bubbleSortByTitle();
-            displayTask();
-        } else if (choice == 3) {
-            //sorting method
-        } else if (choice == 4) {
-            System.out.println("DISPLAY ALL TASK");
-            displayTask();
+        if (tasks.isEmpty()){
+            System.out.println("==> Assistant: No Pending task(s)!");
         } else {
-            System.out.println("Choose only from 1-4. Let's try again!");
+            System.out.println("==> Assistant: How do you want to sort your task(s)? ");
+            System.out.println("\t [1] Priority Level");
+            System.out.println("\t [2] Alphabetical Order");
+            System.out.println("\t [3] By Deadline");
+            System.out.println("\t [4] Display All");
+            System.out.print("SORT BY: ");
+            int choice = input.nextInt();
+
+            if (choice == 1){
+                //sorting method
+            } else if (choice == 2) {
+                System.out.println("DISPLAY TASK BY");
+                System.out.println("\t[1]Ascending");
+                System.out.println("\t[2]Descending");
+                System.out.print("Transaction: ");
+                int response = input.nextInt();
+
+                if (response == 1){
+                    System.out.println("==> ASCENDING ORDER <==");
+                    bubbleSortByTitle();
+                    displayTask();
+                } else if (response == 2) {
+                    System.out.println("==> DESCENDING ORDER <==");
+                    bubbleSortByTitleDescendingOrder();
+                    displayTask();
+                } else {
+                    System.out.println("Choose only from 1 and 2. Let's try again!");
+                }
+
+
+            } else if (choice == 3) {
+                boolean loop;
+
+                do {
+                    loop = false;
+                    System.out.print("Sort Order (1: Ascending, 2: Descending): ");
+                    int order = input.nextInt();
+                    if (order == 1) {
+                        insertionByDeadline(true); // Ascending
+                        displayTask();
+                    } else if (order == 2) {
+                        insertionByDeadline(false); // Descending
+                        displayTask();
+                    } else {
+                        System.out.println("==> Assistant: Choose only from 1 and 2!");
+                        loop = true;
+                    }
+                } while (loop);
+
+
+
+            } else if (choice == 4) {
+                displayTask();
+            } else {
+                System.out.println("Choose only from 1-4. Let's try again!");
+            }
+        }
+    }
+
+    public void insertionSortByTitle(){
+        int n = tasks.size();
+        for (int i = 1; i < n; i++){
+            Task key = tasks.get(i);
+            int j = i -1;
+
+            while (j >=0 && key.getTitle().compareTo(tasks.get(j).getTitle()) < 0) {
+                tasks.set(j + 1, tasks.get(j));
+                j = j - 1;
+            }
+            tasks.set(j + 1, key);
+        }
+    }
+
+    public void insertionByDeadline(boolean ascending){
+        int n  = tasks.size();
+        for (int i = 1; i < n; i++){
+            Task key = tasks.get(i);
+            int j = i - 1;
+
+            while (j >=0 && (ascending ? key.getDueDate() < tasks.get(j).getDueDate() : key.getDueDate() > tasks.get(j).getDueDate())){
+                tasks.set(j + 1, tasks.get(j));
+                j = j - 1;
+            }
+            tasks.set(j + 1, key);
         }
     }
 
@@ -119,8 +187,18 @@ public class Subject {
         }
     }
 
-
-
+    public void bubbleSortByTitleDescendingOrder() {
+        int n = tasks.size();
+        for (int i = 0; i < n - 1; i++) {
+            for (int j = 0; j < n - i - 1; j++) {
+                if (tasks.get(j).getTitle().compareTo(tasks.get(j + 1).getTitle()) < 0) {
+                    Task temp = tasks.get(j);
+                    tasks.set(j, tasks.get(j + 1));
+                    tasks.set(j + 1, temp);
+                }
+            }
+        }
+    }
 
     //Display Task Titles
     public void displayTaskTitle(){
@@ -131,74 +209,81 @@ public class Subject {
         finishedTaskCounter();
 
         line();
-        for(Task e : tasks){
-            counter++;
-            System.out.println("\n==> TASK ["+counter + "] | Title: " + e.getTitle());
-        }
-
-        line();
-        System.out.print("\nChoose a Task: ");
-        int task = input.nextInt();
-
-        if (task == 0){
-            finishedTask();
+        System.out.println("\n");
+        if (tasks.isEmpty()){
+            System.out.println("==> Assistant: No pending task(s)!");
         } else {
 
-            if (!tasks.isEmpty()){
-                line();
-                System.out.println("==> TASK DETAILS <==");
-                Task chosenTask = tasks.get(task-1);
-                chosenTask.display();
-
-                System.out.println("\n== Transaction ==");
-                System.out.println("\t[1] Delete Task \n\t[2] Mark as done \n\t[3] Display Finished Tasks \n\t[4] Exit");
-                System.out.print("Choice: ");
-                int choice = input.nextInt();
-
-                if (choice == 1){
-                    input.nextLine();
-                    System.out.print("Are you sure do you want to DELETE this task? (Yes/No): ");
-                    String response = input.nextLine();
-
-
-                    if (response.equalsIgnoreCase("Yes")) {
-                        System.out.println("Task successfully DELETED!");
-                        tasks.remove(counter-1);
-                        pressEnterToContinue();
-                    } else {
-                        System.out.println("Transaction Cancelled!");
-                        pressEnterToContinue();
-                    }
-
-                } else if (choice == 2) {
-                    input.nextLine();
-                    System.out.print("Are you sure do you want to your task to be MARKED AS DONE? (Yes/No): ");
-                    String response = input.nextLine();
-
-                    if (response.equalsIgnoreCase("Yes")){
-                        System.out.println("Task Done!");
-                        pressEnterToContinue();
-
-                        Task done = tasks.remove(counter-1);
-                        markedAsDone.add(done);
-                    } else {
-                        System.out.println("Transaction Cancelled!");
-                        pressEnterToContinue();
-                    }
-
-                } else if (choice == 3) {
-                    System.out.println("FINISHED TASK(s)");
-                    finishedTask();
-                } else {
-                    System.out.println("Cancelled....");
-                    pressEnterToContinue();
-                }
-
-            } else {
-                System.out.println("==> Assistant: Add Task First!");
+            for(Task e : tasks){
+                counter++;
+                System.out.println("==> TASK ["+counter + "] | Title: " + e.getTitle());
             }
 
+            line();
+            System.out.print("\nChoose a Task: ");
+            int task = input.nextInt();
+
+            if (task == 0){
+                finishedTask();
+            } else {
+
+                if (!tasks.isEmpty()){
+                    line();
+                    Task chosenTask = tasks.get(task-1);
+                    chosenTask.display();
+
+                    System.out.println("\n== Transaction ==");
+                    System.out.println("\t[1] Delete Task \n\t[2] Mark as done \n\t[3] Display Finished Tasks \n\t[4] Exit");
+                    System.out.print("Choice: ");
+                    int choice = input.nextInt();
+
+                    if (choice == 1){
+                        input.nextLine();
+                        System.out.print("Do you want to continue this transaction? (Yes/No): ");
+                        String response = input.nextLine();
+
+
+                        if (response.equalsIgnoreCase("Yes")) {
+                            System.out.println("Task successfully DELETED!");
+                            tasks.remove(task-1);
+                            pressEnterToContinue();
+                        } else {
+                            System.out.println("Transaction Cancelled!");
+                            pressEnterToContinue();
+                        }
+
+                    } else if (choice == 2) {
+                        input.nextLine();
+                        System.out.print("Are you sure do you want to your task to be MARKED AS DONE? (Yes/No): ");
+                        String response = input.nextLine();
+
+                        if (response.equalsIgnoreCase("Yes")){
+                            System.out.println("Task Done!");
+                            Task done = tasks.remove(task-1);
+                            markedAsDone.add(done);
+
+                            pressEnterToContinue();
+                        } else {
+                            System.out.println("Transaction Cancelled!");
+                            pressEnterToContinue();
+                        }
+
+                    } else if (choice == 3) {
+                        System.out.println("FINISHED TASK(s)");
+                        finishedTask();
+                    } else {
+                        System.out.println("Cancelled....");
+                        pressEnterToContinue();
+                    }
+
+                } else {
+                    System.out.println("==> Assistant: Add Task First!");
+                }
+
+            }
         }
+
+
 
 
 
@@ -209,6 +294,10 @@ public class Subject {
         for (Task e : markedAsDone){
             e.display();
         }
+    }
+
+    public int taskSize(){
+        return tasks.size();
     }
 
     public int finishedTaskCounter(){

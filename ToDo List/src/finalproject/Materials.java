@@ -26,11 +26,11 @@ public class Materials {
     }
 
     public String toString() {
-        return "Material Name: " + materialName + ", Quantity: " + quantity;
+        return "\tMaterial Name: " + materialName + ", Quantity: " + quantity;
     }
 
     public void display(){
-        System.out.println("\n== MATERIALS ==");
+        System.out.println("\n\t== MATERIALS ==");
         System.out.println(this);
     }
 }
