@@ -97,6 +97,24 @@ public class Subject {
 
             if (choice == 1){
                 //sorting method
+                System.out.println("== SORT BY PRIORITY LEVEL ==");
+                System.out.println("==> Assistant: How do you want to sort your task?");
+                System.out.println("\t[1] Low to High ");
+                System.out.println("\t[2] High to Low");
+                System.out.print("Transaction: ");
+                int response = input.nextInt();
+
+                if (response == 1){
+                    System.out.println("== LOW TO HIGH ==");
+                    sortTasksByPriorityLevelLowToHigh();
+                } else if (response == 2) {
+                    System.out.println("== HIGH TO LOW ==");
+                    sortTasksByPriorityLevelHighToLow();
+                } else {
+                    System.out.println("Choose only from 1 and 2!");
+                }
+
+
             } else if (choice == 2) {
                 System.out.println("DISPLAY TASK BY");
                 System.out.println("\t[1]Ascending");
@@ -124,6 +142,7 @@ public class Subject {
                     loop = false;
                     System.out.print("Sort Order (1: Ascending, 2: Descending): ");
                     int order = input.nextInt();
+
                     if (order == 1) {
                         insertionByDeadline(true); // Ascending
                         displayTask();
@@ -145,6 +164,48 @@ public class Subject {
             }
         }
     }
+
+    public void sortTasksByPriorityLevelLowToHigh() {
+        if (tasks.isEmpty()) {
+            System.out.println("==> Assistant: No tasks to sort!");
+            return;
+        }
+
+        tasks.sort((task1, task2) -> {
+            int rank1 = getPriorityRank(task1.getPriorityLevel());
+            int rank2 = getPriorityRank(task2.getPriorityLevel());
+            return Integer.compare(rank1, rank2);
+        });
+
+        System.out.println("==> Assistant: Tasks sorted by Priority Level (low, medium, high).");
+        displayTask(); // Display the sorted tasks
+    }
+
+    public void sortTasksByPriorityLevelHighToLow() {
+        if (tasks.isEmpty()) {
+            System.out.println("==> Assistant: No tasks to sort!");
+            return;
+        }
+
+        tasks.sort((task1, task2) -> {
+            int rank1 = getPriorityRank(task1.getPriorityLevel());
+            int rank2 = getPriorityRank(task2.getPriorityLevel());
+            return Integer.compare(rank2, rank1);
+        });
+
+        System.out.println("==> Assistant: Tasks sorted by Priority Level (low, medium, high).");
+        displayTask(); // Display the sorted tasks
+    }
+
+    private int getPriorityRank(String priorityLevel) {
+        switch (priorityLevel.toLowerCase()) {
+            case "low": return 1;
+            case "medium": return 2;
+            case "high": return 3;
+            default: return Integer.MAX_VALUE; // Handle unknown priorities
+        }
+    }
+
 
     public void insertionSortByTitle(){
         int n = tasks.size();
@@ -186,6 +247,21 @@ public class Subject {
             }
         }
     }
+
+    public void bubbleSortByPriorityLevel() {
+        int n = tasks.size();
+        for (int i = 0; i < n - 1; i++) {
+            for (int j = 0; j < n - i - 1; j++) {
+                if (tasks.get(j).getTitle().compareTo(tasks.get(j + 1).getTitle()) > 0) {
+                    Task temp = tasks.get(j);
+                    tasks.set(j, tasks.get(j + 1));
+                    tasks.set(j + 1, temp);
+                }
+            }
+        }
+    }
+
+
 
     public void bubbleSortByTitleDescendingOrder() {
         int n = tasks.size();
