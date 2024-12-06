@@ -1,6 +1,8 @@
 package finalproject;
-
+import java.util.Map;
+import java.util.TreeMap;
 import java.util.Scanner;
+import java.util.LinkedList;
 
 public class Main {
     public static void main(String[] args) {
@@ -48,14 +50,17 @@ public class Main {
         //====================== MENU =======================================
         line();
         System.out.println(" ");
-        System.out.println("                       TO-DO LIST APP");
+        System.out.println("                           TO-DO LIST APP");
         line();
         System.out.println(" ");
         pressEnterToContinue();
-        //register();
+        register();
+        clear();
+
 
 
         while (true) {
+            clear();
             System.out.println("\n ");
             line();
             System.out.println(" ");
@@ -66,7 +71,7 @@ public class Main {
                 System.out.println("\t[1] Add Task \n\t[2] Delete and Mark as Done\n\t[3] Edit/Update \n\t[4] Display\n\t[5] Exit");
                 System.out.print("Choose a transaction (Type 1): ");
                 int transaction = input.nextInt();
-
+                clear();
 
                 if (transaction == 1) {
                     line();
@@ -78,6 +83,7 @@ public class Main {
                     System.out.print("\nSubject: ");
                     int choice = input.nextInt();
                     input.nextLine();
+                    clear();
 
                     if (choice == 1) {
                         System.out.println("\n\n");
@@ -91,42 +97,44 @@ public class Main {
                         System.out.println("\n==> SUBJECT: ADD DATA STRUCTURES");
                         addTask(dataStructures);
                     } else if (choice == 3) {
-                        System.out.println("\n==> SUBJECT: ADD ART APPRECIATION=");
+                        System.out.println("\n==> SUBJECT: ADD ART APPRECIATION");
                         addTask(art);
                     } else if (choice == 4) {
                         System.out.println("\n\n");
                         line();
-                        System.out.println("\n==> SUBJECT: ADD CONTEMPORARY WORLD=");
+                        System.out.println("\n==> SUBJECT: ADD CONTEMPORARY WORLD");
                         addTask(contemporary);
                     } else if (choice == 5) {
                         System.out.println("\n\n");
                         line();
-                        System.out.println("\n==> SUBJECT: ADD ETHICS=");
+                        System.out.println("\n==> SUBJECT: ADD ETHICS");
                         addTask(ethics);
                     } else if (choice == 6) {
                         System.out.println("\n\n");
                         line();
-                        System.out.println("\n ==> SUBJECT: ADD PLATFORM TECHNOLOGY=");
+                        System.out.println("\n ==> SUBJECT: ADD PLATFORM TECHNOLOGY");
                         addTask(platTech);
                     } else if (choice == 7) {
                         System.out.println("\n\n");
                         line();
-                        System.out.println("==> SUBJECT: ADD PATHFIT");
+                        System.out.println("\n==> SUBJECT: ADD PATHFIT");
                         addTask(pathfit);
                     } else if (choice == 8) {
                         System.out.println("\n\n");
                         line();
-                        System.out.println("==> SUBJECT: ADD HUMAN COMPUTER INTERACTION=");
+                        System.out.println("\n==> SUBJECT: ADD HUMAN COMPUTER INTERACTION");
                         addTask(hci);
                     } else {
                         System.out.println("==> Assistant: Choose only from 1-8!");
                         pressEnterToContinue();
+                        clear();
                     }
 
                 } else if (transaction == 2) {
+                    clear();
                     line();
 
-                    System.out.println("\n          ==> DELETE AND MARK AS DONE <==");
+                    System.out.println("\n                     ==> DELETE AND MARK AS DONE <==");
                     System.out.println("Instruction: Choose a subject that you want to DELETE and MARK AS DONE.");
                     System.out.println("             To cancel the transaction press (0)");
                     thinLine();
@@ -178,6 +186,7 @@ public class Main {
 
                     pressEnterToContinue();
                 } else if (transaction == 3) {
+                    clear();
                     line();
 
                     System.out.println("\n                          ==> UPDATE TASK <==");
@@ -197,6 +206,49 @@ public class Main {
 
                     System.out.print("\nSubject: ");
                     int choice = input.nextInt();
+
+                    line();
+                    System.out.println("\n== UPDATE TASK ==");
+                    if (choice == 1) {
+                        System.out.println("\n\n");
+                        line();
+                        System.out.println("\n==> SUBJECT: UPDATE OBJECT ORIENTED PROGRAMMING");
+                        updateTask(oop);
+
+                    } else if (choice == 2) {
+                        System.out.println("\n\n");
+                        line();
+                        System.out.println("\n==> SUBJECT: UPDATE DATA STRUCTURES");
+                        updateTask(dataStructures);
+                    } else if (choice == 3) {
+                        System.out.println("=ADD ART APPRECIATION=");
+                        updateTask(art);
+                    } else if (choice == 4) {
+                        System.out.println("\n\n");
+                        line();
+                        System.out.println("\n==> SUBJECT: ADD CONTEMPORARY WORLD=");
+                        updateTask(contemporary);
+                    } else if (choice == 5) {
+                        System.out.println("\n\n");
+                        line();
+                        System.out.println("\n==> SUBJECT: ADD ETHICS=");
+                        updateTask(ethics);
+                    } else if (choice == 6) {
+                        System.out.println("\n\n");
+                        line();
+                        System.out.println("\n ==> SUBJECT: ADD PLATFORM TECHNOLOGY=");
+                        updateTask(platTech);
+                    } else if (choice == 7) {
+                        System.out.println("\n\n");
+                        line();
+                        System.out.println("==> SUBJECT: ADD PATHFIT");
+                        updateTask(pathfit);
+                    } else if (choice == 8) {
+                        System.out.println("\n\n");
+                        line();
+                        System.out.println("==> SUBJECT: ADD HUMAN COMPUTER INTERACTION=");
+                        updateTask(hci);
+                    }
 
                     pressEnterToContinue();
 
@@ -222,6 +274,8 @@ public class Main {
                     System.out.print("\nSubject: ");
                     int choice = input.nextInt();
 
+                    line();
+                    System.out.println("\n== DISPLAY TASK ==");
                     if (choice == 1) {
                         System.out.println("==> DISPLAY OBJECT ORIENTED PROGRAMMING");
                         oop.displaySort();
@@ -307,6 +361,7 @@ public class Main {
 
             line();
             System.out.println("\n=> REGISTER <=");
+            System.out.println("==> Assistant: Let's register you first!");
 
             String firstName;
             do {
@@ -408,7 +463,7 @@ public class Main {
         String response;
 
         System.out.println("Choose a Task Type:");
-        System.out.println("\t[1] Exam \n\t[2] Laboratory \n\t[3] Group Project \n\t[4] Presentation \n\t[5] Assignment");
+        System.out.println("\t[1] Exam \n\t[2] Laboratory \n\t[3] Group Project \n\t[4] Presentation \n\t[5] Assignment/Activity");
         line();
         System.out.print("\nTask (e.g. 1): ");
         int choice = input.nextInt();
@@ -446,19 +501,19 @@ public class Main {
                 int dueDate, month, year;
 
                 do {
-                    System.out.print("\tDue Date (1-30)*: ");
+                    System.out.print("\tDue Date (1-31)*: ");
                     while (!input.hasNextInt()) {
-                        System.out.println("Invalid input. Please enter a number between 1 and 30.");
+                        System.out.println("Invalid input. Please enter a number between 1 and 31.");
                         input.next();
                     }
                     dueDate = input.nextInt();
                     input.nextLine();
 
-                    if (dueDate < 1 || dueDate > 30) {
+                    if (dueDate < 1 || dueDate > 31) {
                         System.out.println("Hmm... it seems like there is no " + dueDate + " in the calendar. Let's try again!");
                         pressEnterToContinue();
                     }
-                } while (dueDate < 1 || dueDate > 30);
+                } while (dueDate < 1 || dueDate > 31);
 
                 do {
                     System.out.print("\tMonth (e.g 11)*: ");
@@ -554,19 +609,19 @@ public class Main {
                 int dueDate, month, year;
 
                 do {
-                    System.out.print("\tDue Date (1-30)*: ");
+                    System.out.print("\tDue Date (1-31)*: ");
                     while (!input.hasNextInt()) {
-                        System.out.println("Invalid input. Please enter a number between 1 and 30.");
+                        System.out.println("Invalid input. Please enter a number between 1 and 31.");
                         input.next();
                     }
                     dueDate = input.nextInt();
                     input.nextLine();
 
-                    if (dueDate < 1 || dueDate > 30) {
+                    if (dueDate < 1 || dueDate > 31) {
                         System.out.println("Hmm... it seems like there is no " + dueDate + " in the calendar. Let's try again!");
                         pressEnterToContinue();
                     }
-                } while (dueDate < 1 || dueDate > 30);
+                } while (dueDate < 1 || dueDate > 31);
 
                 do {
                     System.out.print("\tMonth (e.g 11)*: ");
@@ -679,19 +734,19 @@ public class Main {
                 int dueDate, month, year;
 
                 do {
-                    System.out.print("\tDue Date (1-30)*: ");
+                    System.out.print("\tDue Date (1-31)*: ");
                     while (!input.hasNextInt()) {
-                        System.out.println("Invalid input. Please enter a number between 1 and 30.");
+                        System.out.println("Invalid input. Please enter a number between 1 and 31.");
                         input.next();
                     }
                     dueDate = input.nextInt();
                     input.nextLine();
 
-                    if (dueDate < 1 || dueDate > 30) {
+                    if (dueDate < 1 || dueDate > 31) {
                         System.out.println("Hmm... it seems like there is no " + dueDate + " in the calendar. Let's try again!");
                         pressEnterToContinue();
                     }
-                } while (dueDate < 1 || dueDate > 30);
+                } while (dueDate < 1 || dueDate > 31);
 
                 do {
                     System.out.print("\tMonth (e.g 11)*: ");
@@ -799,19 +854,19 @@ public class Main {
                 int dueDate, month, year;
 
                 do {
-                    System.out.print("\tDue Date (1-30)*: ");
+                    System.out.print("\tDue Date (1-31)*: ");
                     while (!input.hasNextInt()) {
-                        System.out.println("Invalid input. Please enter a number between 1 and 30.");
+                        System.out.println("Invalid input. Please enter a number between 1 and 31.");
                         input.next();
                     }
                     dueDate = input.nextInt();
                     input.nextLine();
 
-                    if (dueDate < 1 || dueDate > 30) {
+                    if (dueDate < 1 || dueDate > 31) {
                         System.out.println("Hmm... it seems like there is no " + dueDate + " in the calendar. Let's try again!");
                         pressEnterToContinue();
                     }
-                } while (dueDate < 1 || dueDate > 30);
+                } while (dueDate < 1 || dueDate > 31);
 
                 do {
                     System.out.print("\tMonth (e.g 11)*: ");
@@ -873,7 +928,7 @@ public class Main {
             do {
                 repeat = false;
 
-                System.out.println("== ADD ASSIGNMENT ==");
+                System.out.println("== ADD ASSIGNMENT/Activity ==");
 
                 input.nextLine();
                 String title;
@@ -899,19 +954,19 @@ public class Main {
                 int dueDate, month, year;
 
                 do {
-                    System.out.print("\tDue Date (1-30)*: ");
+                    System.out.print("\tDue Date (1-31)*: ");
                     while (!input.hasNextInt()) {
-                        System.out.println("Invalid input. Please enter a number between 1 and 30.");
+                        System.out.println("Invalid input. Please enter a number between 1 and 31.");
                         input.next();
                     }
                     dueDate = input.nextInt();
                     input.nextLine();
 
-                    if (dueDate < 1 || dueDate > 30) {
+                    if (dueDate < 1 || dueDate > 31) {
                         System.out.println("Hmm... it seems like there is no " + dueDate + " in the calendar. Let's try again!");
                         pressEnterToContinue();
                     }
-                } while (dueDate < 1 || dueDate > 30);
+                } while (dueDate < 1 || dueDate > 31);
 
                 do {
                     System.out.print("\tMonth (e.g 11)*: ");
@@ -975,6 +1030,345 @@ public class Main {
         }
     }
 
+    public static void updateTask(Subject subject) {
+        Scanner input = new Scanner(System.in);
+        LinkedList<Task> tasks = subject.getTasks();
+
+        if (tasks.isEmpty()) {
+            System.out.println("No tasks available to update in " + subject.getSubjectName() + ".");
+            return;
+        }
+
+        // Display task titles
+        System.out.println("\n== TASKS IN " + subject.getSubjectName() + " ==");
+        for (int i = 0; i < tasks.size(); i++) {
+            System.out.println("\tTASK [" + (i + 1) + "] " + tasks.get(i).getTitle(i));
+        }
+
+        System.out.print("Select a task to update (1-" + tasks.size() + "): ");
+        int taskIndex = input.nextInt() - 1;
+        input.nextLine();
+
+        if (taskIndex < 0 || taskIndex >= tasks.size()) {
+            System.out.println("Invalid selection. Please try again.");
+            return;
+        }
+
+        Task taskToUpdate = tasks.get(taskIndex);
+        line();
+        System.out.println("\n== DETAILS OF SELECTED TASK ==");
+        taskToUpdate.display();
+
+        boolean continueUpdating = true;
+        while (continueUpdating) {
+            displayUpdateOptions(taskToUpdate);
+            System.out.println("Choice: ");
+            int updateChoice = input.nextInt();
+            input.nextLine();
+            continueUpdating = handleUpdateChoice(taskToUpdate, updateChoice, input);
+        }
+    }
+
+    private static void displayUpdateOptions(Task task) {
+        System.out.println("\nSelect an attribute to update:");
+        System.out.println("\t[1] Title");
+        System.out.println("\t[2] Priority Level");
+        System.out.println("\t[3] Due Date");
+        System.out.println("\t[4] Month");
+        System.out.println("\t[5] Topic");
+        System.out.println("\t[6] Short Description");
+
+        if (task instanceof Exam) {
+            System.out.println("\t[7] Location");
+            System.out.println("\t[8] Exam Type");
+        } else if (task instanceof Laboratory) {
+            System.out.println("\t[7] Location");
+            System.out.println("\t[8] Material Name");
+            System.out.println("\t[9] Material Quantity");
+        } else if (task instanceof GroupProject) {
+            System.out.println("\t[7] Material Name");
+            System.out.println("\t[8] Material Quantity");
+        } else if (task instanceof Presentation) {
+            System.out.println("\t[7] Medium");
+        } else if (task instanceof Assignment) {
+            System.out.println("\t[7] Format");
+            System.out.println("\t[8] Type");
+        }
+        System.out.println("\t[0] Done Updating");
+    }
+
+    private static boolean handleUpdateChoice(Task task, int choice, Scanner input) {
+        switch (choice) {
+            case 1:
+                updateTitle(task, input);
+                break;
+            case 2:
+                updatePriorityLevel(task, input);
+                break;
+            case 3:
+                updateDueDate(task, input);
+                break;
+            case 4:
+                updateMonth(task, input);
+                break;
+            case 5:
+                updateTopic(task, input);
+                break;
+            case 6:
+                updateDescription(task, input);
+                break;
+            case 7:
+                if (task instanceof Exam) {
+                    updateLocation((Exam) task, input);
+                } else if (task instanceof Laboratory) {
+                    updateLocation((Laboratory) task, input);
+                } else if (task instanceof GroupProject) {
+                    updateMaterialNames((GroupProject) task, input);
+                } else if (task instanceof Presentation) {
+                    updateMedium((Presentation) task, input);
+                } else if (task instanceof Assignment) {
+                    updateFormat((Assignment) task, input);
+                }
+                break;
+            case 8:
+                if (task instanceof Exam) {
+                    updateExamType((Exam) task, input);
+                } else if (task instanceof Laboratory) {
+                    updateMaterialNames((Laboratory) task, input);
+                } else if (task instanceof GroupProject) {
+                    updateMaterialQuantities((GroupProject) task, input);
+                } else if (task instanceof Assignment) {
+                    updateType((Assignment) task, input);
+                }
+                break;
+            case 9:
+                if (task instanceof Laboratory) {
+                    updateMaterialQuantities((Laboratory) task, input);
+                }
+            case 0:
+                System.out.println("Finished updating the task.");
+                return false;
+            default:
+                System.out.println("Invalid choice. Please try again.");
+                break;
+        }
+        return true;
+    }
+
+    private static void updateTitle(Task task, Scanner input) {
+        System.out.print("New Title: ");
+        String newTitle = input.nextLine();
+        if (!newTitle.isEmpty()) {
+            task.setTitle(newTitle);
+            System.out.print("Task has been updated! ");
+        }
+    }
+
+    private static void updatePriorityLevel(Task task, Scanner input) {
+        System.out.print("New Priority Level (High, Medium, Low): ");
+        String newPriorityLevel = input.nextLine();
+        if (!newPriorityLevel.isEmpty()) {
+            task.setPriorityLevel(newPriorityLevel);
+            System.out.print("Task has been updated! ");
+        }
+    }
+
+    private static void updateDueDate(Task task, Scanner input) {
+        System.out.print("New Due Date: ");
+        String dueDateInput = input.nextLine();
+        if (!dueDateInput.isEmpty()) {
+            int newDueDate = Integer.parseInt(dueDateInput);
+            task.setDueDate(newDueDate);
+            System.out.print("Task has been updated! ");
+        }
+    }
+
+    private static void updateMonth(Task task, Scanner input) {
+        System.out.print("New Month: ");
+        String monthInput = input.nextLine();
+        if (!monthInput.isEmpty()) {
+            int newMonth = Integer.parseInt(monthInput);
+            task.setMonth(newMonth);
+            System.out.print("Task has been updated! ");
+        }
+    }
+
+    private static void updateTopic(Task task, Scanner input) {
+        System.out.print("New Topic: ");
+        String newTopic = input.nextLine();
+        if (!newTopic.isEmpty()) {
+            task.setTopic(newTopic);
+            System.out.print("Task has been updated! ");
+        }
+    }
+
+    private static void updateDescription(Task task, Scanner input) {
+        System.out.print("New Short Description: ");
+        String newDescription = input.nextLine();
+        if (!newDescription.isEmpty()) {
+            task.setDescription(newDescription);
+            System.out.print("Task has been updated! ");
+        }
+    }
+
+    private static void updateLocation(Exam task, Scanner input) {
+        System.out.print("New Location: ");
+        String newLocation = input.nextLine();
+        if (!newLocation.isEmpty()) {
+            task.setLocation(newLocation);
+            System.out.print("Task has been updated! ");
+        }
+    }
+
+    private static void updateLocation(Laboratory task, Scanner input) {
+        System.out.print("New Location: ");
+        String newLocation = input.nextLine();
+        if (!newLocation.isEmpty()) {
+            task.setLocation(newLocation);
+            System.out.print("Task has been updated! ");
+        }
+    }
+
+    private static void updateExamType(Exam task, Scanner input) {
+        System.out.print("New Exam Type: ");
+        String newExamType = input.nextLine();
+        if (!newExamType.isEmpty()) {
+            task.setExamType(newExamType);
+            System.out.print("Task has been updated! ");
+        }
+    }
+
+    private static void updateMaterialNames(Task task, Scanner input) {
+        TreeMap<String, Materials> equipment = null;
+
+        if (task instanceof Laboratory) {
+            equipment = ((Laboratory) task).getEquipment();
+        } else if (task instanceof GroupProject) {
+            equipment = ((GroupProject) task).getEquipment();
+        }
+
+        // Check if there are any materials to update
+        if (equipment == null || equipment.isEmpty()) {
+            System.out.println("No materials found to update.");
+            return;
+        }
+
+        // Display the current materials
+        System.out.println("Current materials:");
+        for (String materialName : equipment.keySet()) {
+            System.out.println("- " + materialName);
+        }
+
+        // Ask the user which material they want to update
+        System.out.print("Enter the name of the material you want to update: ");
+        String materialToUpdate = input.nextLine();
+
+        // Check if the specified material exists
+        if (!equipment.containsKey(materialToUpdate)) {
+            System.out.println("Material '" + materialToUpdate + "' not found.");
+            return;
+        }
+
+        // Get the material to update
+        Materials material = equipment.get(materialToUpdate);
+
+        // Prompt for the new name
+        System.out.print("Enter new name (or press Enter to keep it unchanged): ");
+        String newName = input.nextLine();
+
+        if (!newName.isEmpty()) {
+            material.setMaterialName(newName);
+            System.out.println("Material name has been updated to '" + newName + "'!");
+        } else {
+            System.out.println("Material name remains as '" + materialToUpdate + "'.");
+        }
+    }
+
+    private static void updateMaterialQuantities(Task task, Scanner input) {
+        TreeMap<String, Materials> equipment = null;
+
+        if (task instanceof Laboratory) {
+            equipment = ((Laboratory) task).getEquipment();
+        } else if (task instanceof GroupProject) {
+            equipment = ((GroupProject) task).getEquipment();
+        }
+
+        // Check if there are any materials to update
+        if (equipment == null || equipment.isEmpty()) {
+            System.out.println("No materials found to update.");
+            return;
+        }
+
+        // Display the current materials and their quantities
+        System.out.println("Current materials and their quantities:");
+        for (Map.Entry<String, Materials> entry : equipment.entrySet()) {
+            String materialName = entry.getKey();
+            Materials material = entry.getValue();
+            System.out.println("- " + materialName + ": " + material.getQuantity());
+        }
+
+        // Ask the user which material they want to update
+        System.out.print("Enter the name of the material whose quantity you want to update: ");
+        String materialToUpdate = input.nextLine();
+
+        // Check if the specified material exists
+        if (!equipment.containsKey(materialToUpdate)) {
+            System.out.println("Material '" + materialToUpdate + "' not found.");
+            return;
+        }
+
+        // Get the material to update
+        Materials material = equipment.get(materialToUpdate);
+
+        // Loop until a valid quantity is entered or the user decides to keep the current quantity
+        while (true) {
+            System.out.print("Enter new quantity (or press Enter to keep it unchanged): ");
+            String quantityInput = input.nextLine();
+
+            if (quantityInput.isEmpty()) {
+                System.out.println("Material quantity remains as " + material.getQuantity() + ".");
+                return; // Exit the loop if the user wants to keep the current quantity
+            }
+
+            try {
+                int newQuantity = Integer.parseInt(quantityInput);
+                material.setQuantity(newQuantity);
+                System.out.println("Material quantity has been updated to " + newQuantity + "!");
+                return; // Exit the loop after a successful update
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid input for quantity. Please enter a valid number.");
+                // The loop will continue, prompting the user again
+            }
+        }
+    }
+
+    private static void updateMedium(Presentation task, Scanner input) {
+        System.out.print("New Medium: ");
+        String newMedium = input.nextLine();
+        if (!newMedium.isEmpty()) {
+            task.setMedium(newMedium);
+            System.out.print("Task has been updated! ");
+        }
+    }
+
+    private static void updateFormat(Assignment task, Scanner input) {
+        System.out.print("New Format: ");
+        String newFormat = input.nextLine();
+        if (!newFormat.isEmpty()) {
+            task.setSubmissionFormat(newFormat);
+            System.out.print("Task has been updated! ");
+        }
+    }
+
+    private static void updateType(Assignment task, Scanner input) {
+        System.out.print("New Type: ");
+        String newType = input.nextLine();
+        if (!newType.isEmpty()) {
+            task.setType(newType);
+            System.out.print("Task has been updated! ");
+        }
+    }
+
 
     // log out and return to registration
     public static void logOut() {
@@ -1007,6 +1401,12 @@ public class Main {
     public static void thinLine() {
         for (int i = 0; i < 35; i++) {
             System.out.print("--");
+        }
+    }
+
+    public static void clear(){
+        for (int i = 0;i < 35 ;i++){
+            System.out.println(" ");
         }
     }
 

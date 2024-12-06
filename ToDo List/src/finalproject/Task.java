@@ -131,6 +131,7 @@ public abstract class Task {
         System.out.println("\tPriority Level: " + this.priorityLevel);
         System.out.println("\tMonth: " + this.month);
         System.out.println("\tDue Date: " + this.dueDate);
+        System.out.println("\tDue Year: " + this.year);
         this.deadlineTracker(this.dueDate, this.month, this.year);
         System.out.println("\tTopic:  " + this.topic);
         System.out.println("\tDescription: " + this.description);

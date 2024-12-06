@@ -33,6 +33,7 @@ public class GroupProject extends Task implements  Equipment{
 
     @Override
     public void display() {
+        System.out.println("==> TASK TYPE: Group Project");
         super.display();
         displayEquipment();
     }

@@ -103,9 +103,9 @@ public class Subject {
                 System.out.println("\t[2] High to Low");
                 System.out.print("Transaction: ");
                 int response = input.nextInt();
-
+                line();
                 if (response == 1){
-                    System.out.println("== LOW TO HIGH ==");
+                    System.out.println("\n== LOW TO HIGH ==");
                     sortTasksByPriorityLevelLowToHigh();
                 } else if (response == 2) {
                     System.out.println("== HIGH TO LOW ==");
@@ -122,8 +122,9 @@ public class Subject {
                 System.out.print("Transaction: ");
                 int response = input.nextInt();
 
+                line();
                 if (response == 1){
-                    System.out.println("==> ASCENDING ORDER <==");
+                    System.out.println("\n==> ASCENDING ORDER <==");
                     bubbleSortByTitle();
                     displayTask();
                 } else if (response == 2) {
@@ -140,14 +141,17 @@ public class Subject {
 
                 do {
                     loop = false;
-                    System.out.print("Sort Order (1: Ascending, 2: Descending): ");
+                    System.out.println("\t[1] Low to High ");
+                    System.out.println("\t[2] High to Low");
                     int order = input.nextInt();
 
+                    line();
+                    System.out.println("\n");
                     if (order == 1) {
-                        insertionByDeadline(true); // Ascending
+                        insertionByDeadline(true);
                         displayTask();
                     } else if (order == 2) {
-                        insertionByDeadline(false); // Descending
+                        insertionByDeadline(false);
                         displayTask();
                     } else {
                         System.out.println("==> Assistant: Choose only from 1 and 2!");
@@ -155,9 +159,8 @@ public class Subject {
                     }
                 } while (loop);
 
-
-
             } else if (choice == 4) {
+                System.out.println("== DISPLAY ALL TASK ==");
                 displayTask();
             } else {
                 System.out.println("Choose only from 1-4. Let's try again!");
@@ -177,8 +180,7 @@ public class Subject {
             return Integer.compare(rank1, rank2);
         });
 
-        System.out.println("==> Assistant: Tasks sorted by Priority Level (low, medium, high).");
-        displayTask(); // Display the sorted tasks
+        displayTask();
     }
 
     public void sortTasksByPriorityLevelHighToLow() {

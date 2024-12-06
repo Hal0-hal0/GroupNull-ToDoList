@@ -30,6 +30,7 @@ public class Assignment extends Task{
 
     @Override
     public void display() {
+        System.out.println("==> TASK TYPE: Assignment");
         super.display();
         System.out.println("\tSubmission Format: " + this.submissionFormat);
         System.out.println("\tType: " + this.submissionFormat);
