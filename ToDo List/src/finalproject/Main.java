@@ -77,7 +77,7 @@ public class Main {
                     line();
                     System.out.println("\n==> ADD TASK <==");
                     System.out.println("Instruction: Choose a subject");
-                    System.out.println("\t[1] Object Oriented Programming \n\t[2] Data Structure \n\t[3] Art Appreciation \n\t[4] Contemporary World \n\t[5] Ethics \n\t[6] Platform technology \n\t[7] Pathfit \n\t[8] Human Computer Interaction");
+                    System.out.println("\t[1] Object Oriented Programming \n\t[2] Data Structures and Algorithms \n\t[3] Art Appreciation \n\t[4] Contemporary World \n\t[5] Ethics \n\t[6] Platform technology \n\t[7] Pathfit \n\t[8] Human Computer Interaction");
                     line();
 
                     System.out.print("\nSubject: ");

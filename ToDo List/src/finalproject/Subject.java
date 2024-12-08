@@ -108,7 +108,7 @@ public class Subject {
                     System.out.println("\n== LOW TO HIGH ==");
                     sortTasksByPriorityLevelLowToHigh();
                 } else if (response == 2) {
-                    System.out.println("== HIGH TO LOW ==");
+                    System.out.println("\n== HIGH TO LOW ==");
                     sortTasksByPriorityLevelHighToLow();
                 } else {
                     System.out.println("Choose only from 1 and 2!");
@@ -116,6 +116,7 @@ public class Subject {
 
 
             } else if (choice == 2) {
+                System.out.println("== SORT BY ALPHABETICAL ORDER ==");
                 System.out.println("DISPLAY TASK BY");
                 System.out.println("\t[1]Ascending");
                 System.out.println("\t[2]Descending");
@@ -128,7 +129,7 @@ public class Subject {
                     bubbleSortByTitle();
                     displayTask();
                 } else if (response == 2) {
-                    System.out.println("==> DESCENDING ORDER <==");
+                    System.out.println("\n==> DESCENDING ORDER <==");
                     bubbleSortByTitleDescendingOrder();
                     displayTask();
                 } else {
@@ -141,8 +142,10 @@ public class Subject {
 
                 do {
                     loop = false;
+                    System.out.println("== SORT BY DEADLINE ==");
                     System.out.println("\t[1] Low to High ");
                     System.out.println("\t[2] High to Low");
+                    System.out.print("Transaction: ");
                     int order = input.nextInt();
 
                     line();
@@ -241,7 +244,7 @@ public class Subject {
         int n = tasks.size();
         for (int i = 0; i < n - 1; i++) {
             for (int j = 0; j < n - i - 1; j++) {
-                if (tasks.get(j).getTitle().compareTo(tasks.get(j + 1).getTitle()) > 0) {
+                if (tasks.get(j).getTitle().toUpperCase().compareTo(tasks.get(j + 1).getTitle()) > 0) {
                     Task temp = tasks.get(j);
                     tasks.set(j, tasks.get(j + 1));
                     tasks.set(j + 1, temp);
@@ -269,7 +272,7 @@ public class Subject {
         int n = tasks.size();
         for (int i = 0; i < n - 1; i++) {
             for (int j = 0; j < n - i - 1; j++) {
-                if (tasks.get(j).getTitle().compareTo(tasks.get(j + 1).getTitle()) < 0) {
+                if (tasks.get(j).getTitle().toUpperCase().compareTo(tasks.get(j + 1).getTitle()) < 0) {
                     Task temp = tasks.get(j);
                     tasks.set(j, tasks.get(j + 1));
                     tasks.set(j + 1, temp);
