@@ -57,14 +57,11 @@ public class Main {
         register();
         clear();
 
-
-
         while (true) {
             clear();
             System.out.println("\n ");
             line();
             System.out.println(" ");
-
 
             try {
                 System.out.println("Let's organize things up!");
@@ -249,7 +246,6 @@ public class Main {
                         System.out.println("==> SUBJECT: ADD HUMAN COMPUTER INTERACTION=");
                         updateTask(hci);
                     }
-
                     pressEnterToContinue();
 
                 } else if (transaction == 4) {
@@ -349,6 +345,7 @@ public class Main {
     //========================== METHODS ===========================
 
 
+
     //Login / Registration
     public static void register() {
         Scanner input = new Scanner(System.in);
@@ -385,8 +382,9 @@ public class Main {
 
             String address;
             do {
-                System.out.print("\tAddress*: ");
+                System.out.print("\tAddress (Street/Barangay, Municipality, City)*: ");
                 address = input.nextLine().toUpperCase();
+
             } while (address.isEmpty());
 
 
@@ -409,6 +407,11 @@ public class Main {
             do {
                 System.out.print("\tProgram*: ");
                 program = input.nextLine().toUpperCase();
+
+                if (!program.equalsIgnoreCase("BSIT")){
+                    System.out.println("==> Assistant: Invalid program!");
+                    program = "";
+                }
             } while (program.isEmpty());
 
 
@@ -463,7 +466,7 @@ public class Main {
         String response;
 
         System.out.println("Choose a Task Type:");
-        System.out.println("\t[1] Exam \n\t[2] Laboratory \n\t[3] Group Project \n\t[4] Presentation \n\t[5] Assignment/Activity");
+        System.out.println("\t[1] Exam \n\t[2] Laboratory \n\t[3] Group Project \n\t[4] Presentation \n\t[5] Assignment/Project");
         line();
         System.out.print("\nTask (e.g. 1): ");
         int choice = input.nextInt();
@@ -481,13 +484,13 @@ public class Main {
                 String title;
                 do {
                     System.out.print("\tTitle*: ");
-                    title = input.nextLine();
+                    title = input.nextLine().toUpperCase();
                 } while (title.isEmpty());
 
                 String priorityLevel;
                 do {
                     System.out.print("\tPriority Level (High, Medium, Low)*: ");
-                    priorityLevel = input.nextLine();
+                    priorityLevel = input.nextLine().toUpperCase();
 
                     if (!priorityLevel.equalsIgnoreCase("High") && !priorityLevel.equalsIgnoreCase("Medium") && !priorityLevel.equalsIgnoreCase("Low")) {
                         System.out.println("Invalid priority level. Please enter High, Medium, or Low.");
@@ -589,13 +592,13 @@ public class Main {
                 String title;
                 do {
                     System.out.print("\tTitle*: ");
-                    title = input.nextLine();
+                    title = input.nextLine().toUpperCase();
                 } while (title.isEmpty());
 
                 String priorityLevel;
                 do {
                     System.out.print("\tPriority Level (High, Medium, Low)*: ");
-                    priorityLevel = input.nextLine();
+                    priorityLevel = input.nextLine().toUpperCase();
 
                     if (!priorityLevel.equalsIgnoreCase("High") && !priorityLevel.equalsIgnoreCase("Medium") && !priorityLevel.equalsIgnoreCase("Low")) {
                         System.out.println("Invalid priority level. Please enter High, Medium, or Low.");
@@ -714,13 +717,13 @@ public class Main {
                 String title;
                 do {
                     System.out.print("\tTitle*: ");
-                    title = input.nextLine();
+                    title = input.nextLine().toUpperCase();
                 } while (title.isEmpty());
 
                 String priorityLevel;
                 do {
                     System.out.print("\tPriority Level (High, Medium, Low)*: ");
-                    priorityLevel = input.nextLine();
+                    priorityLevel = input.nextLine().toUpperCase();
 
                     if (!priorityLevel.equalsIgnoreCase("High") && !priorityLevel.equalsIgnoreCase("Medium") && !priorityLevel.equalsIgnoreCase("Low")) {
                         System.out.println("Invalid priority level. Please enter High, Medium, or Low.");
@@ -834,13 +837,13 @@ public class Main {
                 String title;
                 do {
                     System.out.print("\tTitle*: ");
-                    title = input.nextLine();
+                    title = input.nextLine().toUpperCase();
                 } while (title.isEmpty());
 
                 String priorityLevel;
                 do {
                     System.out.print("\tPriority Level (High, Medium, Low)*: ");
-                    priorityLevel = input.nextLine();
+                    priorityLevel = input.nextLine().toUpperCase();
 
                     if (!priorityLevel.equalsIgnoreCase("High") && !priorityLevel.equalsIgnoreCase("Medium") && !priorityLevel.equalsIgnoreCase("Low")) {
                         System.out.println("Invalid priority level. Please enter High, Medium, or Low.");
@@ -934,13 +937,13 @@ public class Main {
                 String title;
                 do {
                     System.out.print("\tTitle*: ");
-                    title = input.nextLine();
+                    title = input.nextLine().toUpperCase();
                 } while (title.isEmpty());
 
                 String priorityLevel;
                 do {
                     System.out.print("\tPriority Level (High, Medium, Low)*: ");
-                    priorityLevel = input.nextLine();
+                    priorityLevel = input.nextLine().toUpperCase();
 
                     if (!priorityLevel.equalsIgnoreCase("High") && !priorityLevel.equalsIgnoreCase("Medium") && !priorityLevel.equalsIgnoreCase("Low")) {
                         System.out.println("Invalid priority level. Please enter High, Medium, or Low.");

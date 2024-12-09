@@ -290,6 +290,7 @@ public class Subject {
         finishedTaskCounter();
 
         line();
+        System.out.println("\n== Your Task(s) ==");
         System.out.println("\n");
         if (tasks.isEmpty()){
             System.out.println("==> Assistant: No pending task(s)!");
@@ -330,7 +331,6 @@ public class Subject {
                             pressEnterToContinue();
                         } else {
                             System.out.println("Transaction Cancelled!");
-                            pressEnterToContinue();
                         }
 
                     } else if (choice == 2) {
@@ -342,11 +342,8 @@ public class Subject {
                             System.out.println("Task Done!");
                             Task done = tasks.remove(task-1);
                             markedAsDone.add(done);
-
-                            pressEnterToContinue();
                         } else {
                             System.out.println("Transaction Cancelled!");
-                            pressEnterToContinue();
                         }
 
                     } else if (choice == 3) {
@@ -354,7 +351,6 @@ public class Subject {
                         finishedTask();
                     } else {
                         System.out.println("Cancelled....");
-                        pressEnterToContinue();
                     }
 
                 } else {
@@ -363,11 +359,6 @@ public class Subject {
 
             }
         }
-
-
-
-
-
     }
 
     public void finishedTask(){
