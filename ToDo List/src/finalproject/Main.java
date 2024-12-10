@@ -5,8 +5,11 @@ import java.util.Scanner;
 import java.util.LinkedList;
 
 public class Main {
+    private static Student registeredStudent;
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
+
+        Student student = new Student("placeholder","placeholder","placeholder","placeholder",2,'X',"placeholder");
 
         Subject oop = new Subject("Object-Oriented Programming", "Harder Keia Joy", "CIT 207", 5, 2, "Placeholder", "CICT", "Major");
         Subject dataStructures = new Subject("Data Structures And Algorithm", "Harder Keia Joy", "Placeholder", 20, 2, "Placeholder", "CICT", "Major");
@@ -54,6 +57,7 @@ public class Main {
         line();
         System.out.println(" ");
         pressEnterToContinue();
+
         register();
         clear();
 
@@ -63,12 +67,14 @@ public class Main {
             line();
             System.out.println(" ");
 
+
+
             try {
+                int transaction = 0;
                 System.out.println("Let's organize things up!");
                 System.out.println("\t[1] Add Task \n\t[2] Delete and Mark as Done\n\t[3] Edit/Update \n\t[4] Display\n\t[5] Exit");
                 System.out.print("Choose a transaction (Type 1): ");
-                int transaction = input.nextInt();
-                clear();
+                transaction = input.nextInt();
 
                 if (transaction == 1) {
                     line();
@@ -252,7 +258,7 @@ public class Main {
                     line();
 
                     System.out.println("\n                          ==> DISPLAY <==");
-                    System.out.println("Instruction: Choose a subject that you want to DELETE and MARK AS DONE.");
+                    System.out.println("Instruction: Choose a subject that you want to DISPLAY");
                     System.out.println("             To cancel the transaction press (0)");
                     thinLine();
                     System.out.println("\n\t    SUBJECT NAME                 | PENDING | FINISHED");
@@ -308,8 +314,8 @@ public class Main {
                             System.out.println("No student registered!");
                         } else {
                             Student.displayAllStudent();
+                            displaySubjectsForRegisteredStudent();
                         }
-
                     } else if (choice == 0) {
                         System.out.println("Transaction cancelled!");
                     } else {
@@ -331,11 +337,12 @@ public class Main {
                         pressEnterToContinue();
                     }
                 } else {
-                    System.out.println("==> Assistant: Please choose only from 1-5!");
+                    System.out.println("\n==> Assistant: Please choose only from 1-5!");
                     pressEnterToContinue();
                 }
             } catch (Exception e) {
-                System.out.println("=> Assistant: Hmmm... Try entering numbers from 1-5 and try again!");
+                System.out.println("\n==> Assistant: Invalid Input!");
+                input.nextLine();
                 pressEnterToContinue();
             }
         }
@@ -398,7 +405,7 @@ public class Main {
                     isValid = false;
                     input.nextLine();
                 } else {
-                    System.out.println("invalid input!");
+                    System.out.println("==> Assistant: Invalid input!");
                     isValid = true;
                 }
             } while (isValid);
@@ -415,8 +422,16 @@ public class Main {
             } while (program.isEmpty());
 
 
-            System.out.print("=> Assistant: Do you want to SAVE this information?(Yes/No): ");
-            String ans = input.nextLine();
+            String ans;
+            do {
+                System.out.print("=> Assistant: Do you want to SAVE this information?(Yes/No): ");
+                ans = input.nextLine();
+
+                if (!ans.equalsIgnoreCase("yes") && !ans.equalsIgnoreCase("no")){
+                    ans = "";
+                }
+            } while (ans.isEmpty());
+
 
             if (ans.equalsIgnoreCase("yes")) {
                 line();
@@ -427,6 +442,7 @@ public class Main {
                 // Add student
                 Student student = new Student(firstName, lastName, id, address, 2, section, program);
                 Student.addStudent(student);
+                registeredStudent = student;
 
                 //Create subject
                 Subject oop = new Subject("Object-Oriented Programming", "Harder Keia Joy", "CIT 207", 5, 2, "Placeholder", "CICT", "Major");
@@ -447,6 +463,7 @@ public class Main {
                 student.addSubject(pathfit);
                 student.addSubject(hci);
                 System.out.println(" ");
+
                 isValid = false;
 
             } else {
@@ -466,7 +483,7 @@ public class Main {
         String response;
 
         System.out.println("Choose a Task Type:");
-        System.out.println("\t[1] Exam \n\t[2] Laboratory \n\t[3] Group Project \n\t[4] Presentation \n\t[5] Assignment/Project");
+        System.out.println("\t[1] Exam \n\t[2] Laboratory \n\t[3] Project \n\t[4] Presentation \n\t[5] Assignment");
         line();
         System.out.print("\nTask (e.g. 1): ");
         int choice = input.nextInt();
@@ -706,7 +723,7 @@ public class Main {
 
 
         } else if (choice == 3) { //GPROJECT
-            System.out.println("== ADD GROUP PROJECT ==");
+            System.out.println("== ADD PROJECT ==");
 
             boolean repeat;
 
@@ -787,7 +804,7 @@ public class Main {
                 System.out.print("\tShort Description: ");
                 String description = input.nextLine();
 
-                GroupProject groupProject = new GroupProject(title, priorityLevel, dueDate, month, year, topic, description, subject);
+                Project project = new Project(title, priorityLevel, dueDate, month, year, topic, description, subject);
 
                 System.out.print("Do you want to add materials? (yes/no): ");
                 String answer = input.nextLine();
@@ -803,7 +820,7 @@ public class Main {
                         input.nextLine();
 
                         Materials materials = new Materials(name, quantity);
-                        groupProject.addEquipment(materials);
+                        project.addEquipment(materials);
 
                         System.out.print("Do you want to add another material? (yes/no): ");
                         String moreMaterials = input.nextLine();
@@ -815,7 +832,7 @@ public class Main {
                 String ans = input.nextLine();
 
                 if (ans.equalsIgnoreCase("Yes")) {
-                    subject.addTask(groupProject);
+                    subject.addTask(project);
                     System.out.println("Task Saved!");
                     pressEnterToContinue();
                 } else {
@@ -1045,7 +1062,7 @@ public class Main {
         // Display task titles
         System.out.println("\n== TASKS IN " + subject.getSubjectName() + " ==");
         for (int i = 0; i < tasks.size(); i++) {
-            System.out.println("\tTASK [" + (i + 1) + "] " + tasks.get(i).getTitle(i));
+            System.out.println("\t==> TASK [" + (i + 1) + "] " + tasks.get(i).getTitle(i));
         }
 
         System.out.print("Select a task to update (1-" + tasks.size() + "): ");
@@ -1073,6 +1090,7 @@ public class Main {
     }
 
     private static void displayUpdateOptions(Task task) {
+        thinLine();
         System.out.println("\nSelect an attribute to update:");
         System.out.println("\t[1] Title");
         System.out.println("\t[2] Priority Level");
@@ -1088,7 +1106,7 @@ public class Main {
             System.out.println("\t[7] Location");
             System.out.println("\t[8] Material Name");
             System.out.println("\t[9] Material Quantity");
-        } else if (task instanceof GroupProject) {
+        } else if (task instanceof Project) {
             System.out.println("\t[7] Material Name");
             System.out.println("\t[8] Material Quantity");
         } else if (task instanceof Presentation) {
@@ -1125,8 +1143,8 @@ public class Main {
                     updateLocation((Exam) task, input);
                 } else if (task instanceof Laboratory) {
                     updateLocation((Laboratory) task, input);
-                } else if (task instanceof GroupProject) {
-                    updateMaterialNames((GroupProject) task, input);
+                } else if (task instanceof Project) {
+                    updateMaterialNames((Project) task, input);
                 } else if (task instanceof Presentation) {
                     updateMedium((Presentation) task, input);
                 } else if (task instanceof Assignment) {
@@ -1138,8 +1156,8 @@ public class Main {
                     updateExamType((Exam) task, input);
                 } else if (task instanceof Laboratory) {
                     updateMaterialNames((Laboratory) task, input);
-                } else if (task instanceof GroupProject) {
-                    updateMaterialQuantities((GroupProject) task, input);
+                } else if (task instanceof Project) {
+                    updateMaterialQuantities((Project) task, input);
                 } else if (task instanceof Assignment) {
                     updateType((Assignment) task, input);
                 }
@@ -1246,8 +1264,8 @@ public class Main {
 
         if (task instanceof Laboratory) {
             equipment = ((Laboratory) task).getEquipment();
-        } else if (task instanceof GroupProject) {
-            equipment = ((GroupProject) task).getEquipment();
+        } else if (task instanceof Project) {
+            equipment = ((Project) task).getEquipment();
         }
 
         // Check if there are any materials to update
@@ -1292,8 +1310,8 @@ public class Main {
 
         if (task instanceof Laboratory) {
             equipment = ((Laboratory) task).getEquipment();
-        } else if (task instanceof GroupProject) {
-            equipment = ((GroupProject) task).getEquipment();
+        } else if (task instanceof Project) {
+            equipment = ((Project) task).getEquipment();
         }
 
         // Check if there are any materials to update
@@ -1410,6 +1428,15 @@ public class Main {
     public static void clear(){
         for (int i = 0;i < 35 ;i++){
             System.out.println(" ");
+        }
+    }
+
+    public static void displaySubjectsForRegisteredStudent() {
+        if (registeredStudent != null) {
+            System.out.println("\n=> Registered Student's Subjects:");
+            registeredStudent.displaySubject();
+        } else {
+            System.out.println("No student is registered yet.");
         }
     }
 

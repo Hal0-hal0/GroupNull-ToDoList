@@ -209,7 +209,7 @@ public class Subject {
             case "high": return 3;
             default: return Integer.MAX_VALUE; // Handle unknown priorities
         }
-    }
+            }
 
 
     public void insertionSortByTitle(){
@@ -374,6 +374,10 @@ public class Subject {
 
     public int finishedTaskCounter(){
         return markedAsDone.size();
+    }
+
+    public void displaySubject(){
+        System.out.println("Subject name: " + this.getSubjectName() + "| Teacher: " + this.teacher+"| Subject ID: " +this.subjectId+ "| Credits: " +this.credits+ "| Semester Offered: " +this.semesterOffered+ "| Field Study: " +this.fieldStudy+ "| Department: " +this.type+ "| Type: " + this.type);// continue later
     }
 
     //=====================add Tasks=====================

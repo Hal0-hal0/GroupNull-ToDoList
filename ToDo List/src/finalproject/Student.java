@@ -126,7 +126,8 @@ public class Student {
     // ========================Display Linked List=============================
     public void displaySubject(){
         for(Subject e : subject){
-            e.display();
+            e.displaySubject();
+
         }
     }
 
