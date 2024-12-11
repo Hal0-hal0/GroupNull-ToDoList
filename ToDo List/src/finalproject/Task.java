@@ -126,6 +126,7 @@ public abstract class Task {
 
     // ================== DISPLAY =====================
     public void display(){
+        thinLine();
         System.out.println("\n= TASK DETAILS =");
         System.out.println("\tTitle: " + this.title);
         System.out.println("\tPriority Level: " + this.priorityLevel);
@@ -135,6 +136,12 @@ public abstract class Task {
         this.deadlineTracker(this.dueDate, this.month, this.year);
         System.out.println("\tTopic:  " + this.topic);
         System.out.println("\tDescription: " + this.description);
+    }
+
+    public void thinLine() {
+        for (int i = 0; i < 35; i++) {
+            System.out.print("--");
+        }
     }
 
 

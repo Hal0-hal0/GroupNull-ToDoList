@@ -49,7 +49,7 @@
 
         @Override
         public void display() {
-            System.out.println("==> TASK TYPE: Laboratory");
+            System.out.println("\n==> TASK TYPE: Laboratory");
             super.display();
             displayEquipment();
         }

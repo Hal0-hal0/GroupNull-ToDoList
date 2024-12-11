@@ -105,10 +105,10 @@ public class Subject {
                 int response = input.nextInt();
                 line();
                 if (response == 1){
-                    System.out.println("\n== LOW TO HIGH ==");
+                    System.out.println("== LOW TO HIGH ==");
                     sortTasksByPriorityLevelLowToHigh();
                 } else if (response == 2) {
-                    System.out.println("\n== HIGH TO LOW ==");
+                    System.out.println("== HIGH TO LOW ==");
                     sortTasksByPriorityLevelHighToLow();
                 } else {
                     System.out.println("Choose only from 1 and 2!");
@@ -125,11 +125,11 @@ public class Subject {
 
                 line();
                 if (response == 1){
-                    System.out.println("\n==> ASCENDING ORDER <==");
+                    System.out.println("==> ASCENDING ORDER <==");
                     bubbleSortByTitle();
                     displayTask();
                 } else if (response == 2) {
-                    System.out.println("\n==> DESCENDING ORDER <==");
+                    System.out.println("==> DESCENDING ORDER <==");
                     bubbleSortByTitleDescendingOrder();
                     displayTask();
                 } else {
@@ -151,9 +151,11 @@ public class Subject {
                     line();
                     System.out.println("\n");
                     if (order == 1) {
+                        System.out.println("==> HIGH TO LOW ORDER <==");
                         insertionByDeadline(true);
                         displayTask();
                     } else if (order == 2) {
+                        System.out.println("==> LOW TO HIGH ORDER <==");
                         insertionByDeadline(false);
                         displayTask();
                     } else {

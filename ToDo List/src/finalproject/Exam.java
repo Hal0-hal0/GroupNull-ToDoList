@@ -21,7 +21,7 @@ public class Exam extends Activity{
 
     @Override
     public void display() {
-        System.out.println("==> TASK TYPE: Exam");
+        System.out.println("\n==> TASK TYPE: Exam");
         super.display();
         System.out.println("\tExam Type: " + this.examType);
     }

@@ -33,7 +33,7 @@ public class Project extends Task implements  Equipment{
 
     @Override
     public void display() {
-        System.out.println("==> TASK TYPE: Group Project");
+        System.out.println("\n==> TASK TYPE: Group Project");
         super.display();
         displayEquipment();
     }
