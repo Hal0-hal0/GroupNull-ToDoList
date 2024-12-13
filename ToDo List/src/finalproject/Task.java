@@ -120,10 +120,6 @@ public abstract class Task {
 
     }
 
-
-
-
-
     // ================== DISPLAY =====================
     public void display(){
         thinLine();

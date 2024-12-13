@@ -211,22 +211,8 @@ public class Subject {
             case "high": return 3;
             default: return Integer.MAX_VALUE; // Handle unknown priorities
         }
-            }
-
-
-    public void insertionSortByTitle(){
-        int n = tasks.size();
-        for (int i = 1; i < n; i++){
-            Task key = tasks.get(i);
-            int j = i -1;
-
-            while (j >=0 && key.getTitle().compareTo(tasks.get(j).getTitle()) < 0) {
-                tasks.set(j + 1, tasks.get(j));
-                j = j - 1;
-            }
-            tasks.set(j + 1, key);
-        }
     }
+
 
     public void insertionByDeadline(boolean ascending){
         int n  = tasks.size();
@@ -254,21 +240,6 @@ public class Subject {
             }
         }
     }
-
-    public void bubbleSortByPriorityLevel() {
-        int n = tasks.size();
-        for (int i = 0; i < n - 1; i++) {
-            for (int j = 0; j < n - i - 1; j++) {
-                if (tasks.get(j).getTitle().compareTo(tasks.get(j + 1).getTitle()) > 0) {
-                    Task temp = tasks.get(j);
-                    tasks.set(j, tasks.get(j + 1));
-                    tasks.set(j + 1, temp);
-                }
-            }
-        }
-    }
-
-
 
     public void bubbleSortByTitleDescendingOrder() {
         int n = tasks.size();
@@ -376,10 +347,6 @@ public class Subject {
 
     public int finishedTaskCounter(){
         return markedAsDone.size();
-    }
-
-    public void displaySubject(){
-        System.out.println("Subject name: " + this.getSubjectName() + "| Teacher: " + this.teacher+"| Subject ID: " +this.subjectId+ "| Credits: " +this.credits+ "| Semester Offered: " +this.semesterOffered+ "| Field Study: " +this.fieldStudy+ "| Department: " +this.type+ "| Type: " + this.type);// continue later
     }
 
     //=====================add Tasks=====================

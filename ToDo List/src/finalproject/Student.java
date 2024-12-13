@@ -11,8 +11,7 @@ public class Student {
     private  char section;
     private  String program;
     private LinkedList<Subject> subject;
-
-    public static LinkedList<Student> studentList = new LinkedList<>();
+    private LinkedList<Student> studentList = new LinkedList<>();
 
     public Student(String firstName, String lastName, String studentId, String address, int yearLevel, char section, String program) {
         this.firstName = firstName;
@@ -23,6 +22,14 @@ public class Student {
         this.section = section;
         this.program = program;
         this.subject =new LinkedList<>();
+    }
+
+    public LinkedList<Student> getStudentList() {
+        return studentList;
+    }
+
+    public void setStudentList(LinkedList<Student> studentList) {
+        this.studentList = studentList;
     }
 
     public String getFirstName() {
@@ -107,12 +114,12 @@ public class Student {
     }
 
     //Add Student
-    public static void addStudent(Student students){
+    public void addStudent(Student students){
         studentList.add(students);
     }
 
     //Display Student
-    public static void displayAllStudent(){
+    public void displayAllStudent(){
         for(Student e : studentList){
             e.display();
         }
@@ -126,7 +133,7 @@ public class Student {
     // ========================Display Linked List=============================
     public void displaySubject(){
         for(Subject e : subject){
-            e.displaySubject();
+            e.display();
 
         }
     }
