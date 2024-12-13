@@ -111,11 +111,11 @@ public abstract class Task {
         long daysLeft = ChronoUnit.DAYS.between(currentDate,deadline);
 
         if (daysLeft > 0) {
-            System.out.println("\tYour deadline is in " + daysLeft + " day(s).");
+            System.out.println("\tYour DEADLINE is in " + daysLeft + " day(s).");
         } else if (daysLeft == 0) {
-            System.out.println("\tYour deadline is today!");
+            System.out.println("\tYour DEADLINE is today!");
         } else {
-            System.out.println("\tThe deadline was " + Math.abs(daysLeft)  + " days ago! It's OVERDUE!");
+            System.out.println("\tThe DEADLINE was " + Math.abs(daysLeft)  + " days ago! It's OVERDUE!");
         }
 
     }
@@ -126,12 +126,38 @@ public abstract class Task {
         System.out.println("\n= TASK DETAILS =");
         System.out.println("\tTitle: " + this.title);
         System.out.println("\tPriority Level: " + this.priorityLevel);
-        System.out.println("\tMonth: " + this.month);
-        System.out.println("\tDue Date: " + this.dueDate);
-        System.out.println("\tDue Year: " + this.year);
+        dateAndTime();
         this.deadlineTracker(this.dueDate, this.month, this.year);
         System.out.println("\tTopic:  " + this.topic);
         System.out.println("\tDescription: " + this.description);
+    }
+
+    public void dateAndTime(){
+        if (this.month == 1){
+            System.out.println("\tDeadline: January" + " "+this.dueDate + "," + this.year);
+        } else if (this.month == 2) {
+            System.out.println("\tDeadline: February"  + " "+this.dueDate + "," + this.year);
+        } else if (this.month == 3) {
+            System.out.println("\tDeadline: March" + " "+this.dueDate + "," + this.year);
+        }else if (this.month == 4) {
+            System.out.println("\tDeadline: April" + " "+this.dueDate + "," + this.year);
+        }else if (this.month == 5) {
+            System.out.println("\tDeadline: May" + " "+this.dueDate + "," + this.year);
+        }else if (this.month == 6) {
+            System.out.println("\tDeadline: June" + " "+this.dueDate + "," + this.year);
+        }else if (this.month == 7) {
+            System.out.println("\tDeadline: July" + " "+this.dueDate + "," + this.year);
+        }else if (this.month == 8) {
+            System.out.println("\tDeadline: August" + " "+this.dueDate + "," + this.year);
+        }else if (this.month == 9) {
+            System.out.println("\tDeadline: September" + " "+this.dueDate + "," + this.year);
+        }else if (this.month == 10) {
+            System.out.println("\tDeadline: October" + " "+this.dueDate + "," + this.year);
+        }else if (this.month == 11) {
+            System.out.println("\tDeadline: November" + " "+this.dueDate + "," + this.year);
+        }else if (this.month == 12) {
+            System.out.println("\tDeadline: December" + " "+this.dueDate + "," + this.year);
+        }
     }
 
     public void thinLine() {
