@@ -1371,7 +1371,9 @@ public class Main {
                 pressEnterToContinue();
             }
         } while (dueDate < 1 || dueDate > 31);
+        task.setDueDate(dueDate);
         System.out.println("=> Gebinib: Due Date has been updated to " + dueDate + "!");
+
 
     }
 
@@ -1391,6 +1393,7 @@ public class Main {
                 pressEnterToContinue();
             }
         } while (month < 1 || month > 12);
+        task.setMonth(month);
         System.out.println("=> Gebinib: Due Month has been updated to " + month + "!");
 
     }
@@ -1411,6 +1414,7 @@ public class Main {
                 pressEnterToContinue();
             }
         } while (year < 1000 || year > 9999);
+        task.setYear(year);
         System.out.println("=> Gebinib: Due Year has been updated to " + year + "!");
 
     }
