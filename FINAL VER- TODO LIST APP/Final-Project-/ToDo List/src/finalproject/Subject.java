@@ -151,11 +151,11 @@ public class Subject {
                     line();
                     System.out.println("\n");
                     if (order == 1) {
-                        System.out.println("\n==> HIGH TO LOW ORDER <==");
+                        System.out.println("\n==> LOW TO HIGH ORDER <==");
                         insertionByTaskDeadline(true);
                         displayTask();
                     } else if (order == 2) {
-                        System.out.println("\n==> LOW TO HIGH ORDER <==");
+                        System.out.println("\n==> HIGH TO LOW ORDER <==");
                         insertionByTaskDeadline(false);
                         displayTask();
                     } else {

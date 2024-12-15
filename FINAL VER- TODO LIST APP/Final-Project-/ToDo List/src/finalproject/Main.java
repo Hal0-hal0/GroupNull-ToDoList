@@ -273,6 +273,9 @@ public class Main {
 
 
                 } else if (transaction == 4) {
+
+
+
                     boolean loop;
                     do {
                         loop = true;
@@ -473,14 +476,14 @@ public class Main {
                 registeredStudent = student;
 
                 //Create subject
-                Subject oop = new Subject("Object-Oriented Programming", "Harder Keia Joy", "CIT 207", 5, 2, "Placeholder", "CICT", "Major");
-                Subject dataStructures = new Subject("Data Structures And Algorithm", "Harder Keia Joy", "Placeholder", 20, 2, "Placeholder", "CICT", "Major");
-                Subject art = new Subject("Art Appreciation", "Souribio Arturo", "HUM 110", 20, 2, "Placeholder", "CICT", "Major");
-                Subject contemporary = new Subject("Contemporary World", "Beleno Ramon B.", "SS 111", 20, 2, "Placeholder", "CICT", "Major");
-                Subject ethics = new Subject("Ethics", "Tusiap Andrea L.", "", 3, 11, "Placeholder", "Placeholder", "Placeholder");
-                Subject platTech = new Subject("Platform Technologies", "Cadiz Christian", "CIT 206", 3, 1, "Placeholder", "Placeholder", "Placeholder");
-                Subject pathfit = new Subject("PATHFIT 3", "Daanoy Christine Joy F", "PATHFIT 3", 3, 1, "Placeholder", "Placeholder", "Placeholder");
-                Subject hci = new Subject("Human-Computer Interaction 1", "Payunan Ryan Christian", "PATHFIT 3", 3, 1, "Placeholder", "Placeholder", "Placeholder");
+                Subject oop = new Subject("Object-Oriented Programming", "Harder Keia Joy", "CIT 207", 5, 2, "Computer Programming", "College of Information Communication Technology", "Major");
+                Subject dataStructures = new Subject("Data Structures And Algorithm", "Harder Keia Joy", "CC 204", 20, 2, "Computer Programming", "College of Information Communication Technology", "Major");
+                Subject art = new Subject("Art Appreciation", "Souribio Arturo", "HUM 110", 20, 2, "Education", "College of Education", "Minor");
+                Subject contemporary = new Subject("Contemporary World", "Beleno Ramon B.", "SS 111", 20, 2, "Political Science", "College of Arts and Sciences", "Minor");
+                Subject ethics = new Subject("Ethics", "Tusiap Andrea L.", "SS 112", 3, 11, "Political Science", "College of Arts and Sciences", "Minor");
+                Subject platTech = new Subject("Platform Technologies", "Cadiz Christian", "CIT 206", 3, 1, "Computer Programming", "College of Information Communication Technology", "Major");
+                Subject pathfit = new Subject("PATHFIT 3", "Daanoy Christine Joy F", "PATHFIT 3", 3, 1, "Education", "College of Pescar", "Minor");
+                Subject hci = new Subject("Human-Computer Interaction 1", "Payunan Ryan Christian", "CIT 205", 3, 1, "Computer Programming", "College of Information Communication Technology", "Major");
 
                 student.addSubject(oop);
                 student.addSubject(dataStructures);
@@ -509,8 +512,6 @@ public class Main {
 
         boolean loop;
         String response;
-
-
 
         do {
             loop = true;
@@ -632,11 +633,10 @@ public class Main {
 
                         System.out.println("Task Saved!");
                         pressEnterToContinue();
-                        loop = false;
+                        loop = true;
                     } else {
                         System.out.println("==> Gebinib: Changes discarded. Please try again.");
                         repeat = false;
-                        loop = true;
                     }
 
                 } while (repeat);
@@ -792,16 +792,14 @@ public class Main {
                         subject.addTask(lab);
                         System.out.println("Task Saved!");
                         pressEnterToContinue();
+                        loop = true;
                     } else {
                         System.out.println("==> Gebinib: Changes discarded. Please try again.");
                         pressEnterToContinue();
                         repeat = false;
-                        loop = true;
+
                     }
                 } while (repeat);
-
-
-
 
             } else if (choice == 3) { //GPROJECT
                 System.out.println("== ADD PROJECT ==");
@@ -949,11 +947,11 @@ public class Main {
                         subject.addTask(project);
                         System.out.println("Task Saved!");
                         pressEnterToContinue();
+                        loop = true;
                     } else {
                         System.out.println("==> Gebinib: Changes discarded. Please try again.");
                         pressEnterToContinue();
                         repeat = false;
-                        loop = true;
                     }
                 } while (repeat);
 
@@ -984,7 +982,6 @@ public class Main {
                         }
 
                     }while (priorityLevel.isEmpty());
-
 
 
                     int dueDate, month, year;
@@ -1059,11 +1056,11 @@ public class Main {
                         subject.addTask(presentation);
                         System.out.println("Task Saved!");
                         pressEnterToContinue();
+                        loop = true;
                     } else {
                         System.out.println("==> Gebinib: Changes discarded. Please try again.");
                         pressEnterToContinue();
                         repeat = false;
-                        loop = true;
                     }
                 } while (repeat);
 
@@ -1096,44 +1093,55 @@ public class Main {
                     }while (priorityLevel.isEmpty());
 
 
-
                     int dueDate, month, year;
+                    boolean addDateAgain;
 
                     do {
+                        addDateAgain = false;
                         System.out.print("\tDue Date (1-31)*: ");
+
                         while (!input.hasNextInt()) {
                             System.out.println("Invalid input. Please enter a number between 1 and 31.");
-                            input.next();
+                            input.nextLine();
+                            addDateAgain = true;
                         }
+
                         dueDate = input.nextInt();
                         input.nextLine();
 
                         if (dueDate < 1 || dueDate > 31) {
                             System.out.println("Hmm... it seems like there is no " + dueDate + " in the calendar. Let's try again!");
                             pressEnterToContinue();
+                            addDateAgain = true;
                         }
-                    } while (dueDate < 1 || dueDate > 31);
+                    } while (addDateAgain);
 
                     do {
+                        addDateAgain = false;
                         System.out.print("\tMonth (e.g 11)*: ");
                         while (!input.hasNextInt()) {
                             System.out.println("Invalid input. Please enter a number between 1 and 12.");
-                            input.next();
+                            input.nextLine();
+                            addDateAgain = true;
                         }
                         month = input.nextInt();
                         input.nextLine();
 
+
                         if (month < 1 || month > 12) {
                             System.out.println("Hmm... it seems like there is no " + month + " in the calendar. Let's try again!");
                             pressEnterToContinue();
+                            addDateAgain = true;
                         }
-                    } while (month < 1 || month > 12);
+                    } while (addDateAgain);
 
                     do {
+                        addDateAgain = false;
                         System.out.print("\tYear (e.g 2024)*: ");
                         while (!input.hasNextInt()) {
                             System.out.println("Invalid input. Please enter a valid year (e.g., 2024).");
-                            input.next();
+                            input.nextLine();
+                            addDateAgain = true;
                         }
                         year = input.nextInt();
                         input.nextLine();
@@ -1141,8 +1149,9 @@ public class Main {
                         if (year < 1000 || year > 9999) {
                             System.out.println("Hmm... " + year + " seems invalid. Let's try again!");
                             pressEnterToContinue();
+                            addDateAgain = true;
                         }
-                    } while (year < 1000 || year > 9999);
+                    } while (addDateAgain);
 
                     System.out.print("\tTopic: ");
                     String topic = input.nextLine();
@@ -1176,10 +1185,8 @@ public class Main {
                         System.out.println("==> Gebinib: Changes discarded. Please try again.");
                         pressEnterToContinue();
                         repeat = false;
-                        loop = true;
                     }
                 } while (repeat);
-
             } else if (choice == 0) {
                 System.out.println("Transaction Cancelled!");
                 pressEnterToContinue();
@@ -1187,6 +1194,7 @@ public class Main {
             } else {
                 System.out.println("==> Gebinib: Choose only from 1-5!");
                 pressEnterToContinue();
+                loop = true;
             }
         } while (loop);
 
