@@ -194,10 +194,10 @@ public class Subject {
             return;
         }
 
-        tasks.sort((task1, task2) -> {
+        tasks.sort((task1, task2) -> {  //the task 1 and 2 is like a placeholder to compare using lambda
             int rank1 = getTaskPriorityRank(task1.getPriorityLevel());
             int rank2 = getTaskPriorityRank(task2.getPriorityLevel());
-            return Integer.compare(rank2, rank1);
+            return Integer.compare(rank2, rank1); //compares rank 2 to rank 1 id >,<,=
         });
 
         System.out.println("==> Assistant: Tasks sorted by Priority Level (low, medium, high).");
@@ -217,13 +217,17 @@ public class Subject {
     public void insertionByTaskDeadline(boolean ascending){
         int n  = tasks.size();
         for (int i = 1; i < n; i++){
-            Task key = tasks.get(i);
-            int j = i - 1;
+            Task key = tasks.get(i); // this is the task, we will find its position, index 1
+            int j = i - 1; //before task
 
+            //   j>=0 make sure not out of bound
             while (j >=0 && (ascending ? key.getDueDate() < tasks.get(j).getDueDate() : key.getDueDate() > tasks.get(j).getDueDate())){
+                // Shift the task at index j one position to the right (to index j + 1)
                 tasks.set(j + 1, tasks.get(j));
-                j = j - 1;
+                //         index      element
+                j = j - 1; // Move the pointer one step to the left
             }
+            // Insert the key task into the correct position (j + 1)
             tasks.set(j + 1, key);
         }
     }
@@ -232,10 +236,12 @@ public class Subject {
         int n = tasks.size();
         for (int i = 0; i < n - 1; i++) {
             for (int j = 0; j < n - i - 1; j++) {
+                // Compare the titles of the tasks at positions j and j + 1
                 if (tasks.get(j).getTitle().toUpperCase().compareTo(tasks.get(j + 1).getTitle()) > 0) {
-                    Task temp = tasks.get(j);
-                    tasks.set(j, tasks.get(j + 1));
-                    tasks.set(j + 1, temp);
+                    // If the title of task[j] is greater than task[j + 1], swap them
+                    Task temp = tasks.get(j); // Save task[j] temporarily
+                    tasks.set(j, tasks.get(j + 1));  // Set task[j] to task[j + 1]
+                    tasks.set(j + 1, temp);  // Set task[j + 1] to the saved task
                 }
             }
         }

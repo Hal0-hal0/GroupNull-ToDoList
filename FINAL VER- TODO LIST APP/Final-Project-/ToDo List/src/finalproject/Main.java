@@ -1338,6 +1338,8 @@ public class Main {
         if (!newTitle.isEmpty()) {
             task.setTitle(newTitle);
             System.out.println("=> Gebinib: Title has been updated to " + newTitle + "!");
+        } else {
+            System.out.println("Title remains as it is!");
         }
     }
 
@@ -1354,6 +1356,8 @@ public class Main {
                     !priorityLevel.equalsIgnoreCase("Low")) {
                 System.out.println("=> Gebinib: Invalid priority level. Please enter High, Medium, or Low.");
                 priorityLevel = ""; // Reset to empty to continue the loop
+            } else {
+                System.out.println("Priority level remains as it is!");
             }
         } while (priorityLevel.isEmpty());
 
@@ -1433,6 +1437,8 @@ public class Main {
         if (!newTopic.isEmpty()) {
             task.setTopic(newTopic);
             System.out.println("=> Gebinib: Topic has been updated to " + newTopic + "!");
+        } else {
+            System.out.println("Topic remains as it is!");
         }
     }
 
@@ -1442,6 +1448,8 @@ public class Main {
         if (!newDescription.isEmpty()) {
             task.setDescription(newDescription);
             System.out.println("=> Gebinib: Description has been updated to " + newDescription + "!");
+        } else {
+            System.out.println("Description remains as it is!");
         }
     }
 
@@ -1451,6 +1459,8 @@ public class Main {
         if (!newLocation.isEmpty()) {
             task.setLocation(newLocation);
             System.out.println("=> Gebinib: Exam Location has been updated to " + newLocation + "!");
+        } else {
+            System.out.println("Location remains as it is!");
         }
     }
 
@@ -1460,6 +1470,8 @@ public class Main {
         if (!newLocation.isEmpty()) {
             task.setLocation(newLocation);
             System.out.println("=> Gebinib: Laboratory Location has been updated to " + newLocation + "!");
+        } else {
+            System.out.println("Location remains as it is!");
         }
     }
 
@@ -1469,6 +1481,8 @@ public class Main {
         if (!newExamType.isEmpty()) {
             task.setExamType(newExamType);
             System.out.println("=> Gebinib: Exam Type has been updated to " + newExamType + "!");
+        } else {
+            System.out.println("Exam remains as it is!");
         }
     }
 
@@ -1622,6 +1636,8 @@ public class Main {
         if (!newMedium.isEmpty()) {
             task.setMedium(newMedium);
             System.out.println("=> Gebinib: Presentation Medium has been updated to " + newMedium + "!");
+        } else {
+            System.out.println("Medium remains as it is!");
         }
     }
 
@@ -1631,6 +1647,8 @@ public class Main {
         if (!newFormat.isEmpty()) {
             task.setSubmissionFormat(newFormat);
             System.out.println("=> Gebinib: Assignment Format has been updated to " + newFormat + "!");
+        } else {
+            System.out.println("Format remains as it is!");
         }
     }
 
@@ -1640,6 +1658,8 @@ public class Main {
         if (!newType.isEmpty()) {
             task.setType(newType);
             System.out.println("=> Gebinib: Assignment Type has been updated to " + newType + "!");
+        } else {
+            System.out.println("Type remains as it is!");
         }
     }
 
